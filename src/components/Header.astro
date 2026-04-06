@@ -1,0 +1,30 @@
+---
+import config from '../data/config.json';
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b border-white/5"
+  style="background:rgba(15,23,36,0.95)">
+  <div class="max-w-6xl mx-auto px-7 py-4 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-2.5 no-underline">
+      <div class="w-9 h-9 rounded-lg flex items-center justify-center font-extrabold text-lg text-white"
+        style="background:var(--accent)">
+        {config.owner.initials}
+      </div>
+      <span class="text-lg font-bold text-white tracking-tight">{config.owner.name}</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-7 text-sm font-medium" style="color:#94A3B8">
+      <a href="#services" class="hover:text-white transition">Services</a>
+      <a href="#portfolio" class="hover:text-white transition">Portfolio</a>
+      <a href="#pricing" class="hover:text-white transition">Pricing</a>
+      <a href="#hosting" class="hover:text-white transition">Hosting</a>
+      <a href="#faq" class="hover:text-white transition">FAQ</a>
+    </nav>
+    <a
+      href="#contact"
+      class="px-5 py-2.5 rounded-lg font-semibold text-xs text-white transition hover:-translate-y-0.5 hover:shadow-lg"
+      style="background:var(--accent)"
+    >
+      Get a Free Quote
+    </a>
+  </div>
+</header>

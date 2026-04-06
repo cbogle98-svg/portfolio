@@ -1,0 +1,88 @@
+---
+import config from '../data/config.json';
+---
+
+<section id="portfolio" class="py-32" style="background:var(--navy)">
+  <div class="max-w-6xl mx-auto px-7">
+    <div class="text-xs uppercase tracking-[0.3em] font-bold mb-3" style="color:var(--accent-light)">
+      {config.portfolio.eyebrow}
+    </div>
+    <h2 class="text-4xl md:text-5xl font-extrabold mb-4 text-white leading-[1.1] tracking-tight">
+      {config.portfolio.headline}
+    </h2>
+    <p class="text-base leading-relaxed mb-16 max-w-xl" style="color:#94A3B8">
+      {config.portfolio.subhead}
+    </p>
+
+    <div class="flex flex-col gap-20">
+      {config.portfolio.items.map((item, index) => (
+        <div class={`grid md:grid-cols-[1.15fr_0.85fr] gap-14 items-center ${index % 2 === 1 ? 'md:[&>*:first-child]:order-2' : ''}`}>
+          <div class="rounded-2xl overflow-hidden border shadow-2xl"
+            style="background:var(--navy-light);border-color:rgba(255,255,255,0.08);box-shadow:0 30px 60px rgba(0,0,0,0.3)">
+            <div class="flex items-center gap-1.5 px-4 py-2.5 border-b"
+              style="background:var(--navy-mid);border-color:rgba(255,255,255,0.06)">
+              <div class="w-2 h-2 rounded-full" style="background:#FF5F57"></div>
+              <div class="w-2 h-2 rounded-full" style="background:#FEBC2E"></div>
+              <div class="w-2 h-2 rounded-full" style="background:#28C840"></div>
+              <div class="ml-2.5 px-3 py-1 rounded text-[10px] flex-1"
+                style="background:rgba(255,255,255,0.06);color:#64748B">{item.id}.example.com</div>
+            </div>
+            <div class="aspect-[16/10] p-6 flex flex-col" style={`background:${item.previewBg}`}>
+              <div class="flex justify-between items-center mb-auto">
+                <div class="text-sm font-bold text-white/90">{item.name}</div>
+                <div class="flex gap-3">
+                  <span class="block w-8 h-0.5 bg-white/20 rounded"></span>
+                  <span class="block w-8 h-0.5 bg-white/20 rounded"></span>
+                  <span class="block w-8 h-0.5 bg-white/20 rounded"></span>
+                </div>
+              </div>
+              <div class="mt-auto">
+                <h3 class="text-xl md:text-2xl font-bold text-white leading-tight mb-1.5"
+                  style="font-family:var(--font-heading)">
+                  {item.previewTagline}
+                </h3>
+                <p class="text-[10px] text-white/50 mb-3">{item.previewSubline}</p>
+                <span class="inline-block text-[9px] font-bold px-4 py-1.5 rounded text-white"
+                  style={`background:${item.tagColor}`}>
+                  {item.previewBtn}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full mb-3.5 border"
+              style="background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.3);color:var(--warm)">
+              <span class="w-1.5 h-1.5 rounded-full" style="background:var(--warm)"></span>
+              <span class="text-[10px] font-bold uppercase tracking-[0.15em]">Concept Design</span>
+            </div>
+            <div class="text-[11px] uppercase tracking-[0.25em] font-bold mb-3" style={`color:${item.tagColor}`}>
+              {item.tag}
+            </div>
+            <h3 class="text-3xl md:text-4xl font-extrabold mb-3.5 text-white leading-tight">
+              {item.name}
+            </h3>
+            <p class="text-base leading-relaxed mb-6" style="color:#94A3B8">
+              {item.description}
+            </p>
+            <ul class="flex flex-col gap-2.5 mb-7">
+              {item.features.map(feature => (
+                <li class="flex items-center gap-2.5 text-sm" style="color:#94A3B8">
+                  <span class="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold"
+                    style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3);color:var(--accent)">
+                    ✓
+                  </span>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <a href={item.url} class="inline-flex items-center gap-2 text-sm font-semibold transition hover:gap-3"
+              style="color:var(--accent-light)">
+              View Full Demo →
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

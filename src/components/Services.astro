@@ -1,0 +1,35 @@
+---
+import config from '../data/config.json';
+---
+
+<section id="services" class="py-32" style="background:var(--cream)">
+  <div class="max-w-6xl mx-auto px-7">
+    <div class="text-xs uppercase tracking-[0.3em] font-bold mb-3" style="color:var(--accent)">
+      {config.services.eyebrow}
+    </div>
+    <h2 class="text-4xl md:text-5xl font-extrabold mb-4 text-slate-900 leading-[1.1] tracking-tight">
+      {config.services.headline}<br />{config.services.headline2}
+    </h2>
+    <p class="text-base leading-relaxed mb-16 max-w-xl text-slate-500">
+      {config.services.subhead}
+    </p>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {config.services.items.map(service => (
+        <div class="bg-white border border-slate-200 rounded-xl p-9 transition hover:-translate-y-1.5 hover:shadow-2xl hover:border-[var(--accent)] relative overflow-hidden group">
+          <div class="absolute top-0 left-0 right-0 h-[3px] opacity-0 group-hover:opacity-100 transition"
+            style="background:var(--accent)"></div>
+          <div class="w-13 h-13 rounded-xl flex items-center justify-center text-2xl mb-5"
+            style="background:var(--accent-glow);width:52px;height:52px">
+            {service.icon}
+          </div>
+          <h3 class="text-lg font-bold mb-2.5 text-slate-900" style="font-family:var(--font-body)">
+            {service.title}
+          </h3>
+          <p class="text-sm leading-relaxed text-slate-500">
+            {service.description}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

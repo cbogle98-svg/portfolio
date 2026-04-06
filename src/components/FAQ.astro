@@ -1,0 +1,43 @@
+---
+import config from '../data/config.json';
+---
+
+<section id="faq" class="py-32" style="background:var(--cream)">
+  <div class="max-w-6xl mx-auto px-7">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <div class="text-xs uppercase tracking-[0.3em] font-bold mb-3" style="color:var(--accent)">
+        {config.faq.eyebrow}
+      </div>
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-4 text-slate-900 leading-[1.1] tracking-tight">
+        {config.faq.headline1}<br />{config.faq.headline2}
+      </h2>
+      <p class="text-base leading-relaxed text-slate-500">
+        {config.faq.subhead}
+      </p>
+    </div>
+    <div class="max-w-3xl mx-auto flex flex-col gap-4">
+      {config.faq.items.map(item => (
+        <details class="bg-white border border-slate-200 rounded-xl overflow-hidden transition hover:border-[var(--accent)] group">
+          <summary class="px-7 py-6 cursor-pointer flex items-center justify-between gap-5 text-base font-semibold text-slate-900 list-none">
+            {item.q}
+            <span class="w-7 h-7 rounded-full flex items-center justify-center text-lg font-semibold transition group-open:rotate-45 group-open:text-white flex-shrink-0"
+              style="background:var(--accent-glow);border:1px solid rgba(59,130,246,0.2);color:var(--accent)">
+              +
+            </span>
+          </summary>
+          <div class="px-7 pb-6 text-sm leading-relaxed text-slate-500">
+            {item.a}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  details summary::-webkit-details-marker { display: none; }
+  details[open] summary span {
+    background: var(--accent) !important;
+    color: white !important;
+  }
+</style>

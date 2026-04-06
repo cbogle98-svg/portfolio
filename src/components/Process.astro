@@ -1,0 +1,31 @@
+---
+import config from '../data/config.json';
+---
+
+<section class="py-32" style="background:var(--cream)">
+  <div class="max-w-6xl mx-auto px-7">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <div class="text-xs uppercase tracking-[0.3em] font-bold mb-3" style="color:var(--accent)">
+        {config.process.eyebrow}
+      </div>
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-4 text-slate-900 leading-[1.1] tracking-tight">
+        {config.process.headline}
+      </h2>
+      <p class="text-base leading-relaxed text-slate-500">
+        {config.process.subhead}
+      </p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {config.process.steps.map(step => (
+        <div class="bg-white border border-slate-200 rounded-xl p-8 text-center transition hover:-translate-y-1 hover:shadow-xl hover:border-[var(--accent)]">
+          <div class="w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center text-xl font-extrabold border-2"
+            style="background:var(--accent-glow);border-color:var(--accent);color:var(--accent);font-family:var(--font-heading)">
+            {step.num}
+          </div>
+          <h4 class="text-base font-bold mb-2 text-slate-900" style="font-family:var(--font-body)">{step.title}</h4>
+          <p class="text-xs leading-relaxed text-slate-500">{step.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,92 @@
+---
+import config from '../data/config.json';
+---
+
+<section class="relative overflow-hidden pt-32 pb-24" style="background:var(--navy);min-height:100vh;display:flex;align-items:center">
+  <div class="absolute -top-72 -right-48 w-[800px] h-[800px] rounded-full pointer-events-none"
+    style="background:radial-gradient(circle, rgba(59,130,246,0.08), transparent 70%)"></div>
+  <div class="absolute -bottom-48 -left-24 w-[600px] h-[600px] rounded-full pointer-events-none"
+    style="background:radial-gradient(circle, rgba(245,158,11,0.05), transparent 70%)"></div>
+
+  <div class="max-w-6xl mx-auto px-7 relative z-10 w-full">
+    <div class="grid md:grid-cols-2 gap-20 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6 border"
+          style="background:rgba(59,130,246,0.1);border-color:rgba(59,130,246,0.2);color:var(--accent-light)">
+          <span class="w-2 h-2 rounded-full animate-pulse" style="background:var(--accent)"></span>
+          <span class="text-xs font-semibold uppercase tracking-[0.15em]">{config.hero.badge}</span>
+        </div>
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] mb-6 text-white tracking-tight">
+          {config.hero.headlinePart1}{' '}
+          <span class="bg-clip-text text-transparent"
+            style="background-image:linear-gradient(135deg, var(--accent-light), var(--warm));-webkit-background-clip:text">
+            {config.hero.headlineGradient}
+          </span>
+        </h1>
+        <p class="text-lg leading-relaxed mb-9 max-w-lg" style="color:#94A3B8">
+          {config.hero.description}
+        </p>
+        <div class="flex flex-wrap gap-4 mb-12">
+          <a
+            href="#contact"
+            class="px-8 py-4 rounded-lg font-bold text-sm text-white transition hover:-translate-y-0.5 hover:shadow-2xl"
+            style="background:var(--accent)"
+          >
+            {config.hero.primaryCtaText}
+          </a>
+          <a
+            href="#portfolio"
+            class="px-8 py-4 rounded-lg font-semibold text-sm text-white border transition hover:bg-white/5"
+            style="border-color:rgba(255,255,255,0.15)"
+          >
+            {config.hero.secondaryCtaText}
+          </a>
+        </div>
+        <div class="flex flex-wrap gap-10">
+          {config.hero.stats.map(stat => (
+            <div>
+              <div class="text-2xl font-extrabold text-white leading-none" style="font-family:var(--font-heading)">
+                {stat.num}
+              </div>
+              <div class="text-xs uppercase tracking-widest font-medium mt-1" style="color:#64748B">
+                {stat.lbl}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="hidden md:block">
+        <div class="rounded-2xl overflow-hidden border shadow-2xl"
+          style="background:var(--navy-light);border-color:rgba(255,255,255,0.08);box-shadow:0 40px 80px rgba(0,0,0,0.4)">
+          <div class="flex items-center gap-2 px-4 py-3 border-b"
+            style="background:var(--navy-mid);border-color:rgba(255,255,255,0.06)">
+            <div class="w-2.5 h-2.5 rounded-full" style="background:#FF5F57"></div>
+            <div class="w-2.5 h-2.5 rounded-full" style="background:#FEBC2E"></div>
+            <div class="w-2.5 h-2.5 rounded-full" style="background:#28C840"></div>
+            <div class="ml-3 px-3 py-1 rounded text-[11px] flex-1"
+              style="background:rgba(255,255,255,0.06);color:#94A3B8">codybogle.com/portfolio</div>
+          </div>
+          <div class="p-5 aspect-[16/10]">
+            <div class="grid grid-cols-2 grid-rows-2 gap-2 h-full">
+              <div class="row-span-2 rounded-lg p-5 flex flex-col justify-end border"
+                style="background:linear-gradient(135deg, #2D4A3E, #1B3028);border-color:rgba(122,158,142,0.2)">
+                <h4 class="text-[13px] font-bold text-white">Bosque River Builders</h4>
+                <p class="text-[10px] text-white/70 mt-0.5">Custom Homes & Construction</p>
+              </div>
+              <div class="rounded-lg p-5 flex flex-col justify-end border"
+                style="background:linear-gradient(135deg, #1a1010, #0D1117);border-color:rgba(232,83,14,0.2)">
+                <h4 class="text-[13px] font-bold text-white">Easter Heat & Air</h4>
+                <p class="text-[10px] text-white/70 mt-0.5">HVAC Services</p>
+              </div>
+              <div class="rounded-lg p-5 flex flex-col justify-end border"
+                style="background:linear-gradient(135deg, #2C2418, #12100E);border-color:rgba(200,169,110,0.2)">
+                <h4 class="text-[13px] font-bold text-white">Robertson Welding</h4>
+                <p class="text-[10px] text-white/70 mt-0.5">Welding & Fencing</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,65 @@
+---
+import '../styles/global.css';
+import config from '../data/config.json';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+const pageTitle = title ?? `${config.owner.name} — ${config.owner.title} — ${config.owner.location}`;
+const pageDesc = description ?? `${config.owner.tagline}. Based in ${config.owner.location}, serving ${config.owner.serviceArea}.`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDesc} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style is:global define:vars={{
+      navy: config.brand.navy,
+      navyLight: config.brand.navyLight,
+      navyMid: config.brand.navyMid,
+      accent: config.brand.accent,
+      accentLight: config.brand.accentLight,
+      warm: config.brand.warm,
+      cream: config.brand.cream
+    }}>
+      :root {
+        --navy: var(--navy);
+        --navy-light: var(--navyLight);
+        --navy-mid: var(--navyMid);
+        --accent: var(--accent);
+        --accent-light: var(--accentLight);
+        --warm: var(--warm);
+        --cream: var(--cream);
+        --accent-glow: color-mix(in srgb, var(--accent) 15%, transparent);
+        --font-heading: 'Playfair Display', serif;
+        --font-body: 'Inter', sans-serif;
+      }
+      body {
+        background: var(--cream);
+        color: #1E293B;
+        font-family: var(--font-body);
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-family: var(--font-heading);
+      }
+      html { scroll-behavior: smooth; }
+    </style>
+  </head>
+  <body class="antialiased">
+    <slot />
+  </body>
+</html>

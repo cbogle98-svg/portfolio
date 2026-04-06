@@ -1,0 +1,341 @@
+{
+  "owner": {
+    "name": "Cody Bogle",
+    "initials": "CB",
+    "title": "Web Designer & Developer",
+    "tagline": "Websites for Local Trades & Service Businesses",
+    "location": "Stephenville, TX",
+    "serviceArea": "Erath County & surrounding areas",
+    "email": "cody@codybogle.com",
+    "phone": "+1XXXXXXXXXX"
+  },
+  "brand": {
+    "navy": "#0F1724",
+    "navyLight": "#1A2537",
+    "navyMid": "#243044",
+    "accent": "#3B82F6",
+    "accentLight": "#60A5FA",
+    "warm": "#F59E0B",
+    "cream": "#FAFAF8",
+    "fontHeading": "Playfair Display",
+    "fontBody": "Inter"
+  },
+  "hero": {
+    "badge": "For Local Trades & Service Businesses",
+    "headlinePart1": "Websites Built for People Who",
+    "headlineGradient": "Work With Their Hands",
+    "description": "Professional web design for contractors, HVAC techs, welders, builders, plumbers, ranchers, and tradesmen across Erath County. Sites that bring real customers through your door — built by someone who understands how you work.",
+    "primaryCtaText": "Start Your Project",
+    "secondaryCtaText": "See My Work",
+    "stats": [
+      { "num": "Local", "lbl": "Erath County Based" },
+      { "num": "Modern", "lbl": "Mobile-First Design" },
+      { "num": "Fast", "lbl": "Quick Turnaround" }
+    ]
+  },
+  "services": {
+    "eyebrow": "What I Offer",
+    "headline": "Everything Your Business",
+    "headline2": "Needs Online",
+    "subhead": "From a brand-new website to a full refresh of what you've got, I handle it all so you can focus on running your business.",
+    "items": [
+      {
+        "icon": "🎨",
+        "title": "Custom Web Design",
+        "description": "Unique, hand-crafted designs tailored to your brand and your customers. No cookie-cutter templates."
+      },
+      {
+        "icon": "📱",
+        "title": "Mobile-First Development",
+        "description": "Over half your customers are browsing on their phone. Every site I build looks and works perfectly on any screen size."
+      },
+      {
+        "icon": "🔍",
+        "title": "Local SEO",
+        "description": "Get found when people search 'near me.' I optimize your site for local search so Erath County customers find you first."
+      },
+      {
+        "icon": "⚡",
+        "title": "Fast & Managed Hosting",
+        "description": "Don't want to deal with servers, SSL certificates, or 'why is my site down?' emails. Let me host it for you — lightning fast, always online."
+      },
+      {
+        "icon": "💬",
+        "title": "Content & Copywriting",
+        "description": "Don't know what to write? I'll craft the words for your site that speak directly to your customers and get them to take action."
+      },
+      {
+        "icon": "🔧",
+        "title": "Ongoing Support",
+        "description": "Websites aren't set-and-forget. I offer maintenance plans to keep things updated, secure, and running smoothly year-round."
+      }
+    ]
+  },
+  "portfolio": {
+    "eyebrow": "Concept Work",
+    "headline": "Built for Businesses Like Yours",
+    "subhead": "These are concept designs created to showcase what's possible for local trades and service businesses in Erath County. Each one is custom-built to match a different brand, audience, and industry — not real client work (yet!).",
+    "items": [
+      {
+        "id": "bosque",
+        "name": "Bosque River Builders",
+        "tag": "Custom Home Builder",
+        "tagColor": "#7A9E8E",
+        "url": "demo_bosque_river_builders.html",
+        "description": "A premium website for a custom home builder serving the Stephenville area. Forest and sage tones convey craftsmanship and trust, with clear calls to action driving consultation requests.",
+        "features": [
+          "Elegant serif typography with modern layout",
+          "Project showcase gallery",
+          "Built-in consultation request form",
+          "Fully responsive on all devices"
+        ],
+        "previewBg": "linear-gradient(135deg, #2D4A3E 0%, #1B3028 100%)",
+        "previewTagline": "Where Texas Land Meets Craftsmanship",
+        "previewSubline": "Custom homes, barndominiums, and commercial construction.",
+        "previewBtn": "Start Your Project"
+      },
+      {
+        "id": "easter",
+        "name": "Easter Heat & Air",
+        "tag": "HVAC Services",
+        "tagColor": "#E8530E",
+        "url": "demo_easter_heat_and_air.html",
+        "description": "A bold, dark-themed site for a local HVAC company. The flame orange and ice blue palette immediately communicates heating and cooling, with emergency contact prominently featured.",
+        "features": [
+          "Animated emergency call-to-action",
+          "Click-to-call phone integration",
+          "Customer review showcase",
+          "Dark theme for standout brand identity"
+        ],
+        "previewBg": "linear-gradient(135deg, #0D1117, #161B22)",
+        "previewTagline": "YOUR COMFORT IS OUR BUSINESS",
+        "previewSubline": "Family-owned HVAC service for Stephenville and surrounding areas.",
+        "previewBtn": "Call Now"
+      },
+      {
+        "id": "robertson",
+        "name": "Robertson Welding & Fencing",
+        "tag": "Welding & Fencing",
+        "tagColor": "#C67D4A",
+        "url": "demo_robertson_welding_fencing.html",
+        "description": "An industrial, rugged design for a welding and fencing contractor. Rust and steel tones with classic serif typography give the site the same handcrafted feel as the work itself.",
+        "features": [
+          "Photo gallery for project showcase",
+          "Service area coverage display",
+          "Trust metrics and social proof",
+          "Warm, industrial brand aesthetic"
+        ],
+        "previewBg": "linear-gradient(135deg, #12100E, #1C1F24)",
+        "previewTagline": "Built to Last. Built by Hand.",
+        "previewSubline": "Custom fencing, welding, and ranch facilities for Erath County.",
+        "previewBtn": "Get a Free Quote"
+      }
+    ]
+  },
+  "about": {
+    "eyebrow": "About Me",
+    "headline": "Your Neighbor, Not a Faceless Agency",
+    "intro": "I build websites for local trades and service businesses across Erath County. Air Force veteran, Texas-raised, with a background in tech and project management — which means I don't just make things look good. I make sure the whole process is smooth, on time, and on budget.",
+    "body1": "When you work with me, you're working directly with the person building your site. No account managers, no outsourced developers overseas, no runaround. I'm right here in Erath County.",
+    "body2": "I understand what local trades need because I live here and I've worked with my hands too. Whether you're a contractor, an HVAC tech, a welder, a builder, or a service company — I know your customers and I know how to reach them online.",
+    "credentials": [
+      "Air Force Veteran",
+      "Texas Raised",
+      "Full-Stack Developer",
+      "Built for Local Trades"
+    ]
+  },
+  "pricing": {
+    "eyebrow": "Pricing",
+    "headline1": "Honest Pricing,",
+    "headline2": "No Surprises",
+    "subhead": "Pick the package that fits your business. Every project gets the same care and quality — the only difference is how much you need.",
+    "retainerSavings": 200,
+    "retainerMonthly": 50,
+    "tiers": [
+      {
+        "name": "Starter",
+        "priceOnetime": 800,
+        "priceRetainer": 600,
+        "description": "Perfect for new businesses that need a clean, professional online presence.",
+        "featured": false,
+        "features": [
+          "Single-page custom website",
+          "Mobile-friendly design",
+          "Contact form & click-to-call",
+          "Google Maps integration",
+          "Basic local SEO setup",
+          "Hosting setup assistance",
+          "2 rounds of revisions"
+        ]
+      },
+      {
+        "name": "Business",
+        "priceOnetime": 1800,
+        "priceRetainer": 1600,
+        "description": "The complete package for established businesses ready to grow online.",
+        "featured": true,
+        "badge": "Most Popular",
+        "features": [
+          "Up to 5 custom-designed pages",
+          "Mobile-first responsive design",
+          "Photo gallery / project showcase",
+          "Contact form with email delivery",
+          "Full local SEO optimization",
+          "Google Business Profile setup",
+          "Hosting & domain setup",
+          "Basic copywriting included",
+          "Unlimited revisions until you love it"
+        ]
+      },
+      {
+        "name": "Premium",
+        "priceOnetime": 3500,
+        "priceRetainer": 3300,
+        "priceSuffix": "+",
+        "description": "Full-featured sites for businesses that need more — bookings, e-commerce, or custom features.",
+        "featured": false,
+        "features": [
+          "Everything in Business",
+          "Unlimited pages",
+          "Online booking or scheduling",
+          "E-commerce / online store",
+          "Customer reviews integration",
+          "Advanced SEO & analytics",
+          "Full copywriting service",
+          "Logo design (if needed)",
+          "3 months free maintenance"
+        ]
+      }
+    ]
+  },
+  "hosting": {
+    "eyebrow": "Hosting & Ownership",
+    "headline1": "Two Ways to Run",
+    "headline2": "Your Website",
+    "subhead": "Most clients let me handle the hosting so they never have to think about it. But your website is yours — if you ever want to take it somewhere else, you can. No lock-in, ever.",
+    "options": [
+      {
+        "type": "primary",
+        "pill": "Recommended",
+        "title": "I Build It & Host It",
+        "description": "The easy path. I take care of everything — your site lives on fast, secure hosting that I manage personally. You never deal with servers, SSL certificates, or 'why is my site down?' emails.",
+        "features": [
+          "Lightning-fast managed hosting",
+          "Free SSL certificate (the little padlock)",
+          "Daily automated backups",
+          "99.9% uptime monitoring",
+          "Domain registration included",
+          "Business email setup if you need it",
+          "Direct support from me — one phone call"
+        ],
+        "price": "$25",
+        "priceLabel": "/month — or included free with the monthly retainer"
+      },
+      {
+        "type": "secondary",
+        "pill": "Also Available",
+        "title": "I Build It, You Host It",
+        "description": "Want to host it yourself or already have hosting set up? No problem. When the project's done, I hand you everything you need to run it on your own.",
+        "features": [
+          "Complete website files (zip or Git repo)",
+          "Domain transferred to your account",
+          "Setup guide written in plain English",
+          "30 days of post-launch support included",
+          "Help getting it live on your chosen host",
+          "No ongoing fees, no lock-in"
+        ],
+        "price": "$0",
+        "priceLabel": "/month — one-time handoff at project completion"
+      }
+    ]
+  },
+  "faq": {
+    "eyebrow": "Common Questions",
+    "headline1": "Answers to What",
+    "headline2": "Most People Ask",
+    "subhead": "If you don't see your question here, just give me a call or send an email — I'm always happy to chat.",
+    "items": [
+      {
+        "q": "How long does it take to build a website?",
+        "a": "Most projects take 2 to 4 weeks from our first meeting to launch day. Simpler sites can go faster, and bigger projects with e-commerce or custom features might take a bit longer. I'll give you a clear timeline before we start so there are no surprises."
+      },
+      {
+        "q": "Do I own my website when it's finished?",
+        "a": "Yes, 100%. Your website, your domain, your content — it all belongs to you. Most of my clients let me host their site (it's the easy path), but if you ever want to take it somewhere else, you can. I'll hand over the files, transfer the domain to your name, and walk you through getting it set up wherever you want. No lock-in, no hostage situations — that's not how I do business."
+      },
+      {
+        "q": "Do I have to use you for hosting?",
+        "a": "Nope. I offer hosting because most local business owners don't want to deal with servers, SSL certificates, and downtime alerts — and frankly, it's just easier for everyone if I handle it. But if you have a tech-savvy nephew, an existing host you like, or just want to do it yourself, I'll build the site, hand you the files, and help you get it live somewhere else."
+      },
+      {
+        "q": "What if I already have a website but it's outdated?",
+        "a": "That's one of the most common requests I get. I can refresh your existing site, rebuild it from scratch, or move you off an old platform like Wix or GoDaddy onto something faster and easier to manage. We'll talk through what you have and figure out the best path forward."
+      },
+      {
+        "q": "Do you handle hosting and the domain name?",
+        "a": "Yes. I'll help you pick and register a domain (like yourbusiness.com) and get you set up with reliable, fast hosting. You'll always own these accounts in your name — I'll just help you set them up so you don't have to figure it out yourself."
+      },
+      {
+        "q": "What do you need from me to get started?",
+        "a": "Honestly, not much. Just a conversation to start. From there, I'll need things like your logo (if you have one), some photos of your work or business, and a basic idea of what you want to say. If you're missing any of that, no problem — I can help you figure it out or even take photos and write copy for you."
+      },
+      {
+        "q": "Will my website show up on Google?",
+        "a": "Yes. Every site I build is set up with the basics for local SEO, so when people search for your type of business in Stephenville or anywhere in Erath County, you'll have a real shot at showing up. The Business and Premium packages include deeper SEO work and Google Business Profile setup."
+      },
+      {
+        "q": "What happens if something breaks after launch?",
+        "a": "You're covered for the first 30 days — if anything I built breaks, I'll fix it free of charge. After that, you can either call me when you need a fix or sign up for the monthly retainer (see below) for ongoing updates, security patches, and small changes whenever you need them."
+      },
+      {
+        "q": "What's the monthly retainer and is it required?",
+        "a": "The retainer is completely optional — you can do a one-time build with no ongoing commitment if you'd rather. But for $50/month, the retainer covers ongoing maintenance, security updates, hosting checks, small content changes (text edits, new photos, hours updates, etc.), and priority response when you call. As a bonus, signing up for the retainer takes $200 off your initial build cost. Most clients find it pays for itself just from the changes they'd otherwise call about anyway."
+      },
+      {
+        "q": "Can I cancel the retainer if I don't need it anymore?",
+        "a": "Yes, anytime. No long-term contract, no early-cancel fees, no fine print. Just give me 30 days notice and we'll wind it down. If you ever want to pick it back up later, the door's always open. The $200 build discount is yours to keep either way — I'd rather earn your trust than lock you in."
+      },
+      {
+        "q": "Do you only work with businesses in Erath County?",
+        "a": "Erath County and the surrounding areas (Comanche, Eastland, Hood, Somervell, Palo Pinto) are my focus, but I'm happy to work with anyone in Texas or beyond. The advantage of being local is that I can meet you in person — but for projects further away, video calls work just fine."
+      },
+      {
+        "q": "How do payments work?",
+        "a": "Simple: 50% up front to start the project, and 50% when your site goes live. No hidden fees, no monthly contracts you can't get out of. I accept check, cash, Venmo, or card — whatever's easiest for you."
+      }
+    ]
+  },
+  "process": {
+    "eyebrow": "How It Works",
+    "headline": "Simple. Transparent. Done Right.",
+    "subhead": "No confusing jargon, no mystery pricing. Here's exactly how we'll work together.",
+    "steps": [
+      {
+        "num": 1,
+        "title": "Free Consultation",
+        "description": "We'll meet (in person or by phone) to talk about your business, your goals, and what you need from a website."
+      },
+      {
+        "num": 2,
+        "title": "Design & Feedback",
+        "description": "I'll create a custom mockup of your site. You'll see it and give feedback before a single line of code is finalized."
+      },
+      {
+        "num": 3,
+        "title": "Build & Launch",
+        "description": "Once you approve the design, I build the full site, test it on every device, and launch it live for you."
+      },
+      {
+        "num": 4,
+        "title": "Ongoing Support",
+        "description": "Your site stays fast, secure, and up to date. I'm always a phone call away if you need changes."
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Let's Talk",
+    "headline": "Ready to Get Your Business Online?",
+    "subhead": "Whether you need a brand new website or want to upgrade what you've got, let's have a conversation. The consultation is always free."
+  }
+}
