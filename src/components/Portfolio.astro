@@ -4,13 +4,13 @@ import config from '../data/config.json';
 
 <section id="portfolio" class="py-32" style="background:var(--navy)">
   <div class="max-w-6xl mx-auto px-7">
-    <div class="text-xs uppercase tracking-[0.3em] font-bold mb-3" style="color:var(--accent-light)">
+    <div class="text-xs uppercase tracking-[0.3em] font-medium mb-3" style="color:var(--accent-light)">
       {config.portfolio.eyebrow}
     </div>
-    <h2 class="text-4xl md:text-5xl font-extrabold mb-4 text-white leading-[1.1] tracking-tight">
+    <h2 class="text-4xl md:text-5xl font-light mb-4 text-white leading-[1.1] tracking-tight">
       {config.portfolio.headline}
     </h2>
-    <p class="text-base leading-relaxed mb-16 max-w-xl" style="color:#94A3B8">
+    <p class="text-base leading-relaxed mb-16 max-w-xl" style="color:#A8A29E">
       {config.portfolio.subhead}
     </p>
 
@@ -25,7 +25,7 @@ import config from '../data/config.json';
               <div class="w-2 h-2 rounded-full" style="background:#FEBC2E"></div>
               <div class="w-2 h-2 rounded-full" style="background:#28C840"></div>
               <div class="ml-2.5 px-3 py-1 rounded text-[10px] flex-1"
-                style="background:rgba(255,255,255,0.06);color:#64748B">{item.id}.example.com</div>
+                style="background:rgba(255,255,255,0.06);color:#A8A29E">{item.id}.example.com</div>
             </div>
             <div class="aspect-[16/10] p-6 flex flex-col" style={`background:${item.previewBg}`}>
               <div class="flex justify-between items-center mb-auto">
@@ -52,24 +52,24 @@ import config from '../data/config.json';
 
           <div>
             <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full mb-3.5 border"
-              style="background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.3);color:var(--warm)">
-              <span class="w-1.5 h-1.5 rounded-full" style="background:var(--warm)"></span>
-              <span class="text-[10px] font-bold uppercase tracking-[0.15em]">Concept Design</span>
+              style="background:rgba(217,119,6,0.12);border-color:rgba(217,119,6,0.35);color:var(--accent-light)">
+              <span class="w-1.5 h-1.5 rounded-full" style="background:var(--accent)"></span>
+              <span class="text-[10px] font-medium uppercase tracking-[0.25em]">Concept Design</span>
             </div>
-            <div class="text-[11px] uppercase tracking-[0.25em] font-bold mb-3" style={`color:${item.tagColor}`}>
+            <div class="text-[11px] uppercase tracking-[0.25em] font-medium mb-3" style={`color:${item.tagColor}`}>
               {item.tag}
             </div>
-            <h3 class="text-3xl md:text-4xl font-extrabold mb-3.5 text-white leading-tight">
+            <h3 class="text-3xl md:text-4xl font-light mb-3.5 text-white leading-tight">
               {item.name}
             </h3>
-            <p class="text-base leading-relaxed mb-6" style="color:#94A3B8">
+            <p class="text-base leading-relaxed mb-6" style="color:#A8A29E">
               {item.description}
             </p>
             <ul class="flex flex-col gap-2.5 mb-7">
               {item.features.map(feature => (
-                <li class="flex items-center gap-2.5 text-sm" style="color:#94A3B8">
+                <li class="flex items-center gap-2.5 text-sm" style="color:#A8A29E">
                   <span class="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold"
-                    style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3);color:var(--accent)">
+                    style="background:rgba(217,119,6,0.12);border:1px solid rgba(217,119,6,0.35);color:var(--accent)">
                     ✓
                   </span>
                   {feature}

@@ -4,13 +4,13 @@ import config from '../data/config.json';
 const formatPrice = (n: number) => n.toLocaleString('en-US');
 ---
 
-<section id="pricing" class="py-32" style="background:#F8FAFC">
+<section id="pricing" class="py-32" style="background:#FAFAF9">
   <div class="max-w-6xl mx-auto px-7">
     <div class="text-center max-w-2xl mx-auto mb-12">
-      <div class="text-xs uppercase tracking-[0.3em] font-bold mb-3" style="color:var(--accent)">
+      <div class="text-xs uppercase tracking-[0.3em] font-medium mb-3" style="color:#78350F">
         {config.pricing.eyebrow}
       </div>
-      <h2 class="text-4xl md:text-5xl font-extrabold mb-4 text-slate-900 leading-[1.1] tracking-tight">
+      <h2 class="text-4xl md:text-5xl font-light mb-4 leading-[1.1] tracking-tight" style="color:#1C1917">
         {config.pricing.headline1}<br />{config.pricing.headline2}
       </h2>
       <p class="text-base leading-relaxed text-slate-500">
@@ -21,13 +21,13 @@ const formatPrice = (n: number) => n.toLocaleString('en-US');
     <div class="text-center mb-12">
       <div class="inline-flex items-center bg-white border border-slate-200 rounded-full p-1.5 shadow-sm" id="retainer-toggle">
         <button type="button" class="px-6 py-3 rounded-full text-sm font-semibold transition flex items-center gap-2 text-white" data-mode="onetime"
-          style="background:var(--accent);box-shadow:0 4px 14px rgba(59,130,246,0.3)">
+          style="background:var(--accent);box-shadow:0 4px 14px rgba(217,119,6,0.3)">
           One-Time Build
         </button>
         <button type="button" class="px-6 py-3 rounded-full text-sm font-semibold transition flex items-center gap-2 text-slate-500" data-mode="retainer">
           With Monthly Retainer
           <span class="text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider"
-            style="background:rgba(245,158,11,0.15);color:var(--warm)">Save ${config.pricing.retainerSavings}</span>
+            style="background:#FEF3C7;color:#78350F">Save ${config.pricing.retainerSavings}</span>
         </button>
       </div>
     </div>
@@ -35,7 +35,7 @@ const formatPrice = (n: number) => n.toLocaleString('en-US');
     <div class="grid md:grid-cols-3 gap-6 items-stretch">
       {config.pricing.tiers.map(tier => (
         <div class={`bg-white border rounded-2xl p-10 flex flex-col transition relative ${tier.featured ? 'border-2 scale-[1.03]' : 'border-slate-200 hover:-translate-y-1.5 hover:shadow-2xl'}`}
-          style={tier.featured ? 'border-color:var(--accent);box-shadow:0 20px 60px rgba(59,130,246,0.12)' : ''}>
+          style={tier.featured ? 'border-color:var(--accent);box-shadow:0 20px 60px rgba(217,119,6,0.15)' : ''}>
           {tier.featured && (
             <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider text-white"
               style="background:var(--accent)">
@@ -64,7 +64,7 @@ const formatPrice = (n: number) => n.toLocaleString('en-US');
           <p class="text-sm text-slate-500 mb-6 leading-relaxed">{tier.description}</p>
 
           <div class="hosting-callout hidden flex items-start gap-2.5 rounded-xl p-3.5 mb-5 border"
-            style="background:linear-gradient(135deg, rgba(59,130,246,0.08), rgba(245,158,11,0.06));border-color:rgba(59,130,246,0.2)">
+            style="background:linear-gradient(135deg, rgba(217,119,6,0.08), rgba(252,211,77,0.10));border-color:rgba(217,119,6,0.25)">
             <div class="w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0"
               style="background:var(--accent)">✓</div>
             <div class="text-xs leading-snug">
@@ -116,7 +116,7 @@ const formatPrice = (n: number) => n.toLocaleString('en-US');
         b.classList.toggle('text-slate-500', !isActive);
         if (isActive) {
           (b as HTMLElement).style.background = 'var(--accent)';
-          (b as HTMLElement).style.boxShadow = '0 4px 14px rgba(59,130,246,0.3)';
+          (b as HTMLElement).style.boxShadow = '0 4px 14px rgba(217,119,6,0.3)';
         } else {
           (b as HTMLElement).style.background = 'transparent';
           (b as HTMLElement).style.boxShadow = 'none';

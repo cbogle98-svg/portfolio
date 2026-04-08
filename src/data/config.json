@@ -1,24 +1,30 @@
 {
   "owner": {
     "name": "Cody Bogle",
-    "initials": "CB",
+    "businessName": "Bosque Works",
+    "businessLegalName": "Bosque Works LLC",
+    "initials": "BW",
     "title": "Web Designer & Developer",
     "tagline": "Websites for Local Trades & Service Businesses",
     "location": "Stephenville, TX",
     "serviceArea": "Erath County & surrounding areas",
-    "email": "cody@codybogle.com",
+    "email": "cody@bosqueworks.com",
+    "website": "bosqueworks.com",
     "phone": "+1XXXXXXXXXX"
   },
   "brand": {
-    "navy": "#0F1724",
-    "navyLight": "#1A2537",
-    "navyMid": "#243044",
-    "accent": "#3B82F6",
-    "accentLight": "#60A5FA",
-    "warm": "#F59E0B",
-    "cream": "#FAFAF8",
-    "fontHeading": "Playfair Display",
-    "fontBody": "Inter"
+    "navy": "#1C1917",
+    "navyLight": "#292524",
+    "navyMid": "#44403C",
+    "accent": "#D97706",
+    "accentLight": "#FCD34D",
+    "warm": "#78350F",
+    "cream": "#FAFAF9",
+    "border": "#E7E5E4",
+    "muted": "#A8A29E",
+    "amberBg": "#FEF3C7",
+    "fontHeading": "Arial, Helvetica, sans-serif",
+    "fontBody": "Arial, Helvetica, sans-serif"
   },
   "hero": {
     "badge": "For Local Trades & Service Businesses",

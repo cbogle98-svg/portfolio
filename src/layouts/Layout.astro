@@ -21,12 +21,6 @@ const pageDesc = description ?? `${config.owner.tagline}. Based in ${config.owne
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
     <meta name="description" content={pageDesc} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
-      rel="stylesheet"
-    />
     <style is:global define:vars={{
       navy: config.brand.navy,
       navyLight: config.brand.navyLight,
@@ -34,7 +28,10 @@ const pageDesc = description ?? `${config.owner.tagline}. Based in ${config.owne
       accent: config.brand.accent,
       accentLight: config.brand.accentLight,
       warm: config.brand.warm,
-      cream: config.brand.cream
+      cream: config.brand.cream,
+      border: config.brand.border,
+      muted: config.brand.muted,
+      amberBg: config.brand.amberBg
     }}>
       :root {
         --navy: var(--navy);
@@ -44,17 +41,33 @@ const pageDesc = description ?? `${config.owner.tagline}. Based in ${config.owne
         --accent-light: var(--accentLight);
         --warm: var(--warm);
         --cream: var(--cream);
+        --border: var(--border);
+        --muted: var(--muted);
+        --amber-bg: var(--amberBg);
         --accent-glow: color-mix(in srgb, var(--accent) 15%, transparent);
-        --font-heading: 'Playfair Display', serif;
-        --font-body: 'Inter', sans-serif;
+        --font-heading: Arial, Helvetica, sans-serif;
+        --font-body: Arial, Helvetica, sans-serif;
       }
-      body {
-        background: var(--cream);
-        color: #1E293B;
-        font-family: var(--font-body);
+      @layer base {
+        body {
+          background: var(--cream);
+          color: #44403C;
+          font-family: var(--font-body);
+          font-weight: 400;
+        }
+        h1, h2, h3, h4, h5, h6 {
+          font-family: var(--font-heading);
+          font-weight: 300;
+          color: #1C1917;
+          letter-spacing: 0.01em;
+        }
       }
-      h1, h2, h3, h4, h5, h6 {
-        font-family: var(--font-heading);
+      .eyebrow {
+        font-weight: 500;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        color: #78350F;
       }
       html { scroll-behavior: smooth; }
     </style>
