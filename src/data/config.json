@@ -83,14 +83,14 @@
     "subhead": "These are concept designs created to showcase what's possible for local trades and service businesses in Erath County. Each one is custom-built to match a different brand, audience, and industry — not real client work (yet!).",
     "items": [
       {
-        "id": "bosque",
-        "name": "Bosque River Builders",
-        "tag": "Custom Home Builder",
+        "id": "builder",
+        "name": "Custom Home Builder",
+        "tag": "Premium Concept",
         "tagColor": "#7A9E8E",
-        "url": "demo_bosque_river_builders.html",
-        "description": "A premium website for a custom home builder serving the Stephenville area. Forest and sage tones convey craftsmanship and trust, with clear calls to action driving consultation requests.",
+        "url": null,
+        "description": "A premium concept design for the custom home and remodel market. Forest and sage tones convey craftsmanship and trust, with clear calls to action for consultation requests.",
         "features": [
-          "Elegant serif typography with modern layout",
+          "Elegant typography with modern layout",
           "Project showcase gallery",
           "Built-in consultation request form",
           "Fully responsive on all devices"
@@ -101,12 +101,12 @@
         "previewBtn": "Start Your Project"
       },
       {
-        "id": "easter",
-        "name": "Easter Heat & Air",
-        "tag": "HVAC Services",
+        "id": "hvac",
+        "name": "HVAC Services",
+        "tag": "Bold & Modern",
         "tagColor": "#E8530E",
-        "url": "demo_easter_heat_and_air.html",
-        "description": "A bold, dark-themed site for a local HVAC company. The flame orange and ice blue palette immediately communicates heating and cooling, with emergency contact prominently featured.",
+        "url": null,
+        "description": "A bold, dark-themed concept for the local HVAC market. Flame orange and ice blue immediately communicate heating and cooling, with emergency contact prominently featured.",
         "features": [
           "Animated emergency call-to-action",
           "Click-to-call phone integration",
@@ -115,16 +115,16 @@
         ],
         "previewBg": "linear-gradient(135deg, #0D1117, #161B22)",
         "previewTagline": "YOUR COMFORT IS OUR BUSINESS",
-        "previewSubline": "Family-owned HVAC service for Stephenville and surrounding areas.",
+        "previewSubline": "Heating and cooling for Texas homes when summer hits hard.",
         "previewBtn": "Call Now"
       },
       {
-        "id": "robertson",
-        "name": "Robertson Welding & Fencing",
-        "tag": "Welding & Fencing",
+        "id": "welding",
+        "name": "Welding & Fencing",
+        "tag": "Industrial & Rugged",
         "tagColor": "#C67D4A",
-        "url": "demo_robertson_welding_fencing.html",
-        "description": "An industrial, rugged design for a welding and fencing contractor. Rust and steel tones with classic serif typography give the site the same handcrafted feel as the work itself.",
+        "url": null,
+        "description": "An industrial, rugged concept for welding and fencing contractors. Rust and steel tones with classic typography give the layout the same handcrafted feel as the work itself.",
         "features": [
           "Photo gallery for project showcase",
           "Service area coverage display",
@@ -133,7 +133,7 @@
         ],
         "previewBg": "linear-gradient(135deg, #12100E, #1C1F24)",
         "previewTagline": "Built to Last. Built by Hand.",
-        "previewSubline": "Custom fencing, welding, and ranch facilities for Erath County.",
+        "previewSubline": "Custom fencing, welding, and ranch facilities built to outlast the weather.",
         "previewBtn": "Get a Free Quote"
       }
     ]
