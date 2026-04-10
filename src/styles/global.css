@@ -1,1 +1,18 @@
 @import "tailwindcss";
+
+/* Anchor offset for fixed header */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* Brand-colored text selection */
+::selection {
+  background: rgba(217, 119, 6, 0.3);
+  color: inherit;
+}
+
+/* Accessible focus ring */
+:focus-visible {
+  outline: 2px solid #D97706;
+  outline-offset: 2px;
+}

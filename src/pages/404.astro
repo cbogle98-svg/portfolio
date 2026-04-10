@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+import config from '../data/config.json';
+---
+
+<Layout title="Page Not Found — Bosque Works" description="The page you're looking for doesn't exist.">
+  <div class="min-h-screen flex items-center justify-center px-6" style="background:var(--navy)">
+    <div class="text-center max-w-lg">
+      <div class="text-[8rem] font-bold leading-none mb-2" style="color:var(--accent);font-family:var(--font-heading);opacity:0.25">
+        404
+      </div>
+      <h1 class="text-3xl md:text-4xl font-light text-white mb-4" style="font-family:var(--font-heading)">
+        Page Not Found
+      </h1>
+      <p class="text-base leading-relaxed mb-8" style="color:#A8A29E">
+        The page you're looking for doesn't exist or has been moved. Let's get you back on track.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a
+          href="/"
+          class="px-6 py-3 rounded-lg font-bold text-sm text-white transition hover:-translate-y-0.5 hover:shadow-2xl"
+          style="background:var(--accent)"
+        >
+          Back to Home
+        </a>
+        <a
+          href="/#contact"
+          class="px-6 py-3 rounded-lg font-semibold text-sm text-white border transition hover:bg-white/5"
+          style="border-color:rgba(255,255,255,0.15)"
+        >
+          Get in Touch
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>

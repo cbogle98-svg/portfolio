@@ -23,7 +23,7 @@
     "border": "#E7E5E4",
     "muted": "#A8A29E",
     "amberBg": "#FEF3C7",
-    "fontHeading": "Arial, Helvetica, sans-serif",
+    "fontHeading": "'Inter', Arial, Helvetica, sans-serif",
     "fontBody": "Arial, Helvetica, sans-serif"
   },
   "hero": {
@@ -328,6 +328,11 @@
   "contact": {
     "eyebrow": "Let's Talk",
     "headline": "Ready to Get Your Business Online?",
-    "subhead": "Whether you need a brand new website or want to upgrade what you've got, let's have a conversation. The consultation is always free."
+    "subhead": "Whether you need a brand new website or want to upgrade what you've got, let's have a conversation. The consultation is always free.",
+    "recipientEmail": "cody@bosqueworks.com",
+    "subjectPrefix": "New portfolio inquiry",
+    "turnstileSiteKey": "REPLACE_WITH_TURNSTILE_SITE_KEY",
+    "successMessage": "Thanks! I'll get back to you within 24 hours.",
+    "errorMessage": "Something went wrong. Please call me at (254) 277-2131 instead."
   }
 }

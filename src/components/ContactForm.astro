@@ -1,0 +1,137 @@
+---
+import config from '../data/config.json';
+
+const subjectOptions = config.services.items.map(s => s.title);
+const turnstileSiteKey = config.contact.turnstileSiteKey ?? '';
+---
+
+<form
+  id="contact-form"
+  action="/api/contact"
+  method="POST"
+  class="flex flex-col gap-3"
+>
+  <input type="hidden" name="recipient_email" value={config.contact.recipientEmail} />
+  <input type="hidden" name="subject_prefix" value={config.contact.subjectPrefix} />
+  <input type="hidden" name="business_name" value={config.owner.businessName} />
+
+  <!-- Honeypot -->
+  <input
+    type="text"
+    name="website"
+    class="hidden"
+    style="display:none;position:absolute;left:-9999px"
+    tabindex="-1"
+    autocomplete="off"
+    aria-hidden="true"
+  />
+
+  <input
+    type="text"
+    name="name"
+    placeholder="Your Name"
+    required
+    class="px-4 py-3.5 rounded-lg border bg-white/5 text-white placeholder-white/40 outline-none transition focus:bg-white/10"
+    style="border-color:rgba(255,255,255,0.12);font-family:var(--font-body)"
+  />
+  <input
+    type="email"
+    name="email"
+    placeholder="Email Address"
+    required
+    class="px-4 py-3.5 rounded-lg border bg-white/5 text-white placeholder-white/40 outline-none transition focus:bg-white/10"
+    style="border-color:rgba(255,255,255,0.12);font-family:var(--font-body)"
+  />
+  <input
+    type="tel"
+    name="phone"
+    placeholder="Phone Number"
+    class="px-4 py-3.5 rounded-lg border bg-white/5 text-white placeholder-white/40 outline-none transition focus:bg-white/10"
+    style="border-color:rgba(255,255,255,0.12);font-family:var(--font-body)"
+  />
+  <select
+    name="service_interest"
+    required
+    class="px-4 py-3.5 rounded-lg border bg-white/5 text-white outline-none transition focus:bg-white/10"
+    style="border-color:rgba(255,255,255,0.12);font-family:var(--font-body)"
+  >
+    <option value="" style="color:#1A1A1A">What do you need help with?</option>
+    {subjectOptions.map(opt => (
+      <option value={opt} style="color:#1A1A1A">{opt}</option>
+    ))}
+    <option value="Other" style="color:#1A1A1A">Something else</option>
+  </select>
+  <textarea
+    name="message"
+    rows="4"
+    placeholder="Tell me about your project..."
+    required
+    class="px-4 py-3.5 rounded-lg border bg-white/5 text-white placeholder-white/40 outline-none transition focus:bg-white/10 resize-y min-h-[100px]"
+    style="border-color:rgba(255,255,255,0.12);font-family:var(--font-body)"
+  ></textarea>
+
+  {turnstileSiteKey && turnstileSiteKey !== 'REPLACE_WITH_TURNSTILE_SITE_KEY' && (
+    <div class="cf-turnstile mt-1" data-sitekey={turnstileSiteKey} data-theme="dark"></div>
+  )}
+
+  <button
+    type="submit"
+    id="contact-submit"
+    class="mt-2 px-6 py-4 rounded-lg font-bold text-base text-white transition hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed"
+    style="background:var(--accent);font-family:var(--font-body)"
+  >
+    Send Message <span aria-hidden="true">&rarr;</span>
+  </button>
+  <div
+    id="contact-status"
+    class="hidden text-sm mt-2 px-4 py-3 rounded-lg"
+    role="status"
+    aria-live="polite"
+  ></div>
+</form>
+
+{turnstileSiteKey && turnstileSiteKey !== 'REPLACE_WITH_TURNSTILE_SITE_KEY' && (
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer is:inline></script>
+)}
+
+<script define:vars={{ successMsg: config.contact.successMessage, errorMsg: config.contact.errorMessage }}>
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('contact-status');
+  const button = document.getElementById('contact-submit');
+
+  if (form) {
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const formData = new FormData(form);
+      const originalHTML = button.innerHTML;
+      button.disabled = true;
+      button.textContent = 'Sending...';
+      status.classList.add('hidden');
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          body: formData,
+        });
+        const json = await res.json().catch(() => ({}));
+        if (res.ok && json.ok) {
+          status.textContent = successMsg;
+          status.className = 'text-sm mt-2 px-4 py-3 rounded-lg bg-green-500/10 text-green-300 border border-green-500/30';
+          form.reset();
+          if (window.turnstile && typeof window.turnstile.reset === 'function') {
+            window.turnstile.reset();
+          }
+        } else {
+          status.textContent = (json && json.error) || errorMsg;
+          status.className = 'text-sm mt-2 px-4 py-3 rounded-lg bg-red-500/10 text-red-300 border border-red-500/30';
+        }
+      } catch (err) {
+        status.textContent = errorMsg;
+        status.className = 'text-sm mt-2 px-4 py-3 rounded-lg bg-red-500/10 text-red-300 border border-red-500/30';
+      } finally {
+        button.disabled = false;
+        button.innerHTML = originalHTML;
+      }
+    });
+  }
+</script>
