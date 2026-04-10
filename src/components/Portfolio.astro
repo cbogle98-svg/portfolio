@@ -14,61 +14,70 @@ import config from '../data/config.json';
       {config.portfolio.subhead}
     </p>
 
-    <div class="flex flex-col gap-20">
+    <div class="flex flex-col gap-24">
       {config.portfolio.items.map((item, index) => (
-        <div class={`grid md:grid-cols-[1.15fr_0.85fr] gap-14 items-center ${index % 2 === 1 ? 'md:[&>*:first-child]:order-2' : ''}`}>
-          <div class="rounded-2xl overflow-hidden border shadow-2xl"
-            style="background:var(--navy-light);border-color:rgba(255,255,255,0.08);box-shadow:0 30px 60px rgba(0,0,0,0.3)">
-            <div class="flex items-center gap-1.5 px-4 py-2.5 border-b"
-              style="background:var(--navy-mid);border-color:rgba(255,255,255,0.06)">
-              <div class="w-2 h-2 rounded-full" style="background:#FF5F57"></div>
-              <div class="w-2 h-2 rounded-full" style="background:#FEBC2E"></div>
-              <div class="w-2 h-2 rounded-full" style="background:#28C840"></div>
-              <div class="ml-2.5 px-3 py-1 rounded text-[10px] flex-1"
-                style="background:rgba(255,255,255,0.06);color:#A8A29E">{item.id}.example.com</div>
-            </div>
-            <div class="aspect-[16/10] p-6 flex flex-col" style={`background:${item.previewBg}`}>
-              <div class="flex justify-between items-center mb-auto">
-                <div class="text-sm font-bold text-white/90">{item.name}</div>
-                <div class="flex gap-3">
-                  <span class="block w-8 h-0.5 bg-white/20 rounded"></span>
-                  <span class="block w-8 h-0.5 bg-white/20 rounded"></span>
-                  <span class="block w-8 h-0.5 bg-white/20 rounded"></span>
+        <div class={`grid md:grid-cols-[0.9fr_1.1fr] gap-16 items-center ${index % 2 === 1 ? 'md:[&>*:first-child]:order-2' : ''}`}>
+          <div class="flex justify-center">
+            <div class="relative">
+              <div class="absolute -inset-10 rounded-full blur-3xl pointer-events-none"
+                style="background:radial-gradient(circle, rgba(217,119,6,0.12), transparent 70%)"></div>
+
+              {item.screenshotType === 'mobile' ? (
+                <div class="relative rounded-[2.5rem] p-2 shadow-2xl"
+                  style="background:#0A0A0A;border:1px solid rgba(255,255,255,0.10);box-shadow:0 40px 80px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.04) inset">
+                  <div class="rounded-[2rem] overflow-hidden bg-white" style="width:300px;aspect-ratio:9/19.5">
+                    <img
+                      src={item.screenshot}
+                      alt={`${item.name} — live site, mobile view`}
+                      class="w-full h-full object-cover object-top block"
+                      loading="lazy"
+                    />
+                  </div>
                 </div>
-              </div>
-              <div class="mt-auto">
-                <h3 class="text-xl md:text-2xl font-bold text-white leading-tight mb-1.5"
-                  style="font-family:var(--font-heading)">
-                  {item.previewTagline}
-                </h3>
-                <p class="text-[10px] text-white/50 mb-3">{item.previewSubline}</p>
-                <span class="inline-block text-[9px] font-bold px-4 py-1.5 rounded text-white"
-                  style={`background:${item.tagColor}`}>
-                  {item.previewBtn}
-                </span>
-              </div>
+              ) : (
+                <div class="relative rounded-2xl overflow-hidden border shadow-2xl"
+                  style="background:var(--navy-light);border-color:rgba(255,255,255,0.08);box-shadow:0 30px 60px rgba(0,0,0,0.4);width:520px;max-width:100%">
+                  <div class="flex items-center gap-1.5 px-4 py-2.5 border-b"
+                    style="background:var(--navy-mid);border-color:rgba(255,255,255,0.06)">
+                    <div class="w-2 h-2 rounded-full" style="background:#FF5F57"></div>
+                    <div class="w-2 h-2 rounded-full" style="background:#FEBC2E"></div>
+                    <div class="w-2 h-2 rounded-full" style="background:#28C840"></div>
+                    <div class="ml-2.5 px-3 py-1 rounded text-[10px] flex-1 truncate"
+                      style="background:rgba(255,255,255,0.06);color:#A8A29E">{item.displayUrl || ''}</div>
+                  </div>
+                  <img
+                    src={item.screenshot}
+                    alt={`${item.name} — live site`}
+                    class="w-full block"
+                    loading="lazy"
+                  />
+                </div>
+              )}
+
+              {item.badge && (
+                <div class="absolute -top-3 -right-3 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-[0.15em] flex items-center gap-2 shadow-xl"
+                  style={`background:${item.badge.color};color:white;border:2px solid var(--navy)`}>
+                  {item.badge.pulse && <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>}
+                  {item.badge.text}
+                </div>
+              )}
             </div>
           </div>
 
           <div>
-            <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full mb-3.5 border"
-              style="background:rgba(217,119,6,0.12);border-color:rgba(217,119,6,0.35);color:var(--accent-light)">
-              <span class="w-1.5 h-1.5 rounded-full" style="background:var(--accent)"></span>
-              <span class="text-[10px] font-medium uppercase tracking-[0.25em]">Concept Design</span>
-            </div>
             <div class="text-[11px] uppercase tracking-[0.25em] font-medium mb-3" style={`color:${item.tagColor}`}>
-              {item.tag}
+              {item.tag}{item.location ? ` · ${item.location}` : ''}
             </div>
-            <h3 class="text-3xl md:text-4xl font-light mb-3.5 text-white leading-tight">
+            <h3 class="text-3xl md:text-4xl font-light mb-4 text-white leading-tight">
               {item.name}
             </h3>
             <p class="text-base leading-relaxed mb-6" style="color:#A8A29E">
               {item.description}
             </p>
-            <ul class="flex flex-col gap-2.5 mb-7">
+            <ul class="flex flex-col gap-2.5 mb-8">
               {item.features.map(feature => (
                 <li class="flex items-center gap-2.5 text-sm" style="color:#A8A29E">
-                  <span class="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold"
+                  <span class="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold flex-shrink-0"
                     style="background:rgba(217,119,6,0.12);border:1px solid rgba(217,119,6,0.35);color:var(--accent)">
                     ✓
                   </span>
@@ -76,10 +85,17 @@ import config from '../data/config.json';
                 </li>
               ))}
             </ul>
-            <span class="inline-flex items-center gap-2 text-sm font-medium italic"
-              style="color:#A8A29E">
-              Live demos coming with the first launched client
-            </span>
+            {item.url && (
+              <a
+                href={item.url}
+                target={item.url.startsWith('http') ? '_blank' : undefined}
+                rel={item.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-bold text-sm text-white transition hover:-translate-y-0.5 hover:shadow-2xl"
+                style="background:var(--accent)"
+              >
+                {item.ctaText || 'Visit Live Site'} <span aria-hidden="true">→</span>
+              </a>
+            )}
           </div>
         </div>
       ))}

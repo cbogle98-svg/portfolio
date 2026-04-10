@@ -34,9 +34,9 @@
     "primaryCtaText": "Start Your Project",
     "secondaryCtaText": "See My Work",
     "stats": [
-      { "num": "Local", "lbl": "Erath County Based" },
-      { "num": "Modern", "lbl": "Mobile-First Design" },
-      { "num": "Fast", "lbl": "Quick Turnaround" }
+      { "num": "Live", "lbl": "Client Sites Shipping" },
+      { "num": "Erath", "lbl": "County-Based" },
+      { "num": "Mobile", "lbl": "First Design" }
     ]
   },
   "services": {
@@ -78,63 +78,49 @@
     ]
   },
   "portfolio": {
-    "eyebrow": "Concept Work",
-    "headline": "Built for Businesses Like Yours",
-    "subhead": "These are concept designs created to showcase what's possible for local trades and service businesses in Erath County. Each one is custom-built to match a different brand, audience, and industry — not real client work (yet!).",
+    "eyebrow": "Real Work, Real Range",
+    "headline": "Built for Local Trades",
+    "subhead": "A live client site and a fresh concept exploration — different industries, different design languages, both hand-built. Proof I can design for whatever local trade you bring me.",
     "items": [
       {
-        "id": "builder",
-        "name": "Custom Home Builder",
-        "tag": "Premium Concept",
-        "tagColor": "#7A9E8E",
-        "url": null,
-        "description": "A premium concept design for the custom home and remodel market. Forest and sage tones convey craftsmanship and trust, with clear calls to action for consultation requests.",
+        "id": "hydrostrike",
+        "name": "HydroStrike Pressure Washing",
+        "tag": "Live Client Site",
+        "tagColor": "#0EA5E9",
+        "url": "https://hydrostrikepressurewashing.com",
+        "displayUrl": "hydrostrikepressurewashing.com",
+        "location": "Pisgah, AL · Sand Mountain",
+        "description": "Heavy-duty pressure washing for ag equipment, 18-wheelers, and fleet rigs across the Sand Mountain region. Built around a specialty positioning — not generic residential — with photo-driven mobile-first design and an end-to-end contact pipeline.",
         "features": [
-          "Elegant typography with modern layout",
-          "Project showcase gallery",
-          "Built-in consultation request form",
-          "Fully responsive on all devices"
+          "Custom mobile-first design built around real client photos",
+          "End-to-end contact form (Resend + Cloudflare Turnstile)",
+          "Click-to-call CTA on every screen",
+          "Custom domain with managed hosting and SSL"
         ],
-        "previewBg": "linear-gradient(135deg, #2D4A3E 0%, #1B3028 100%)",
-        "previewTagline": "Where Texas Land Meets Craftsmanship",
-        "previewSubline": "Custom homes, barndominiums, and commercial construction.",
-        "previewBtn": "Start Your Project"
+        "screenshot": "/portfolio/hydrostrike-mobile.png",
+        "screenshotType": "mobile",
+        "ctaText": "Visit Live Site",
+        "badge": { "text": "Live", "color": "#10B981", "pulse": true }
       },
       {
-        "id": "hvac",
-        "name": "HVAC Services",
-        "tag": "Bold & Modern",
-        "tagColor": "#E8530E",
-        "url": null,
-        "description": "A bold, dark-themed concept for the local HVAC market. Flame orange and ice blue immediately communicate heating and cooling, with emergency contact prominently featured.",
+        "id": "ranch-concept",
+        "name": "A Cow/Calf & Hay Operation",
+        "tag": "Concept · Ranch & Ag",
+        "tagColor": "#C9A961",
+        "url": "/concepts/ranch",
+        "displayUrl": "bosqueworks.com/concepts/ranch",
+        "location": "Erath County · Texas",
+        "description": "A cinematic, single-page scroll-snap concept for a multi-generation Texas ranch — cow/calf, custom hay, and ag services rolled into one editorial design language. Earthy palette, serif typography, deliberate pacing. The opposite of utility-driven trades sites — proof that the same hand can shift register when the brand calls for it.",
         "features": [
-          "Animated emergency call-to-action",
-          "Click-to-call phone integration",
-          "Customer review showcase",
-          "Dark theme for standout brand identity"
+          "Cinematic single-page scroll-snap layout (5 panels)",
+          "Editorial serif typography (Playfair Display + Source Serif)",
+          "Earth-tone palette tailored to land and heritage brands",
+          "Built standalone — no shared chrome with the marketing site"
         ],
-        "previewBg": "linear-gradient(135deg, #0D1117, #161B22)",
-        "previewTagline": "YOUR COMFORT IS OUR BUSINESS",
-        "previewSubline": "Heating and cooling for Texas homes when summer hits hard.",
-        "previewBtn": "Call Now"
-      },
-      {
-        "id": "welding",
-        "name": "Welding & Fencing",
-        "tag": "Industrial & Rugged",
-        "tagColor": "#C67D4A",
-        "url": null,
-        "description": "An industrial, rugged concept for welding and fencing contractors. Rust and steel tones with classic typography give the layout the same handcrafted feel as the work itself.",
-        "features": [
-          "Photo gallery for project showcase",
-          "Service area coverage display",
-          "Trust metrics and social proof",
-          "Warm, industrial brand aesthetic"
-        ],
-        "previewBg": "linear-gradient(135deg, #12100E, #1C1F24)",
-        "previewTagline": "Built to Last. Built by Hand.",
-        "previewSubline": "Custom fencing, welding, and ranch facilities built to outlast the weather.",
-        "previewBtn": "Get a Free Quote"
+        "screenshot": "/portfolio/ranch-concept.png",
+        "screenshotType": "desktop",
+        "ctaText": "View Concept",
+        "badge": { "text": "Concept", "color": "#C9A961", "pulse": false }
       }
     ]
   },
