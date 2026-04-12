@@ -141,106 +141,97 @@
     "eyebrow": "Pricing",
     "headline1": "Honest Pricing,",
     "headline2": "No Surprises",
-    "subhead": "Pick the package that fits your business. Every project gets the same care and quality — the only difference is how much you need.",
-    "retainerSavings": 200,
+    "subhead": "Pick the package that fits your business. Every project includes the $50/mo retainer — hosting, monitoring, maintenance, and monthly reporting all covered.",
     "retainerMonthly": 50,
     "tiers": [
       {
         "name": "Starter",
-        "priceOnetime": 800,
-        "priceRetainer": 600,
-        "description": "Perfect for new businesses that need a clean, professional online presence.",
+        "price": 800,
+        "description": "A clean single-page site that gets your business online fast.",
         "featured": false,
         "features": [
-          "Single-page custom website",
-          "Mobile-friendly design",
-          "Contact form & click-to-call",
-          "Google Maps integration",
-          "Basic local SEO setup",
-          "Hosting setup assistance",
+          "Single-page scrolling website",
+          "Mobile-friendly responsive design",
+          "Contact form with email delivery",
+          "Click-to-call phone link",
+          "Custom brand colors",
+          "Hosting + SSL included in retainer",
           "2 rounds of revisions"
         ]
       },
       {
         "name": "Business",
-        "priceOnetime": 1800,
-        "priceRetainer": 1600,
-        "description": "The complete package for established businesses ready to grow online.",
+        "price": 1800,
+        "description": "A full multi-page site with gallery, SEO, and professional presence. The right fit for most local businesses.",
         "featured": true,
         "badge": "Most Popular",
         "features": [
-          "Up to 5 custom-designed pages",
+          "4-6 custom-designed pages",
           "Mobile-first responsive design",
-          "Photo gallery / project showcase",
+          "Before/after photo gallery",
           "Contact form with email delivery",
-          "Full local SEO optimization",
+          "Full local SEO setup",
           "Google Business Profile setup",
-          "Hosting & domain setup",
-          "Basic copywriting included",
-          "Unlimited revisions until you love it"
+          "Content editing & polish",
+          "Hosting + SSL included in retainer",
+          "2 rounds of revisions"
         ]
       },
       {
-        "name": "Premium",
-        "priceOnetime": 3500,
-        "priceRetainer": 3300,
-        "priceSuffix": "+",
-        "description": "Full-featured sites for businesses that need more — bookings, e-commerce, or custom features.",
+        "name": "Professional",
+        "price": 3500,
+        "description": "Custom design, professional copywriting, and a photo shoot — for businesses ready to own their market.",
         "featured": false,
         "features": [
           "Everything in Business",
-          "Unlimited pages",
-          "Online booking or scheduling",
-          "E-commerce / online store",
-          "Customer reviews integration",
-          "Advanced SEO & analytics",
-          "Full copywriting service",
-          "Logo design (if needed)",
-          "3 months free maintenance"
+          "Custom layout & typography",
+          "Professional copywriting from your notes",
+          "Half-day photo shoot included",
+          "Full Google Business Profile optimization",
+          "Social media profile linking",
+          "2 rounds of revisions"
         ]
       }
     ]
   },
-  "hosting": {
-    "eyebrow": "Hosting & Ownership",
-    "headline1": "Two Ways to Run",
-    "headline2": "Your Website",
-    "subhead": "Most clients let me handle the hosting so they never have to think about it. But your website is yours — if you ever want to take it somewhere else, you can. No lock-in, ever.",
-    "options": [
+  "retainer": {
+    "eyebrow": "What's Included",
+    "headline1": "The $50/mo Retainer:",
+    "headline2": "Your Web Guy on Call",
+    "subhead": "Every package includes the monthly retainer. It's not just hosting — it's having someone who keeps your site running, your content fresh, and your numbers in front of you every month.",
+    "features": [
       {
-        "type": "primary",
-        "pill": "Recommended",
-        "title": "I Build It & Host It",
-        "description": "The easy path. I take care of everything — your site lives on fast, secure hosting that I manage personally. You never deal with servers, SSL certificates, or 'why is my site down?' emails.",
-        "features": [
-          "Lightning-fast managed hosting",
-          "Free SSL certificate (the little padlock)",
-          "Daily automated backups",
-          "99.9% uptime monitoring",
-          "Domain registration included",
-          "Business email setup if you need it",
-          "Direct support from me — one phone call"
-        ],
-        "price": "$25",
-        "priceLabel": "/month — or included free with the monthly retainer"
+        "icon": "🖥️",
+        "title": "Managed Hosting + SSL",
+        "description": "Your site lives on fast, secure Cloudflare hosting that I manage. You never deal with servers, certificates, or downtime."
       },
       {
-        "type": "secondary",
-        "pill": "Also Available",
-        "title": "I Build It, You Host It",
-        "description": "Want to host it yourself or already have hosting set up? No problem. When the project's done, I hand you everything you need to run it on your own.",
-        "features": [
-          "Complete website files (zip or Git repo)",
-          "Domain transferred to your account",
-          "Setup guide written in plain English",
-          "30 days of post-launch support included",
-          "Help getting it live on your chosen host",
-          "No ongoing fees, no lock-in"
-        ],
-        "price": "$0",
-        "priceLabel": "/month — one-time handoff at project completion"
+        "icon": "📊",
+        "title": "Monthly Traffic Report",
+        "description": "On the 1st of every month, you get a plain-English recap: how many people visited, where they came from, and what they looked at."
+      },
+      {
+        "icon": "✏️",
+        "title": "Content Updates",
+        "description": "Need to change your phone number, update your hours, add a new service, or swap in a new photo? Just text me — done by tomorrow."
+      },
+      {
+        "icon": "🔒",
+        "title": "Security & Maintenance",
+        "description": "Dependency patches, security updates, and quarterly checkups so your site stays healthy without you thinking about it."
+      },
+      {
+        "icon": "📈",
+        "title": "Uptime Monitoring",
+        "description": "I check your site daily — if something breaks, I catch it before your customers do."
+      },
+      {
+        "icon": "📞",
+        "title": "Direct Support",
+        "description": "One phone call to a real person. No helpdesk, no chatbot, no ticket. Just Cody."
       }
-    ]
+    ],
+    "ownership": "Your website is yours. Your domain is registered in your name. If you ever want to leave, I hand over everything — files, domain, the works. No lock-in, ever."
   },
   "faq": {
     "eyebrow": "Common Questions",
@@ -274,19 +265,19 @@
       },
       {
         "q": "Will my website show up on Google?",
-        "a": "Yes. Every site I build is set up with the basics for local SEO, so when people search for your type of business in Stephenville or anywhere in Erath County, you'll have a real shot at showing up. The Business and Premium packages include deeper SEO work and Google Business Profile setup."
+        "a": "Yes. Every site I build is set up with the basics for local SEO, so when people search for your type of business in Stephenville or anywhere in Erath County, you'll have a real shot at showing up. The Business and Professional packages include deeper SEO work and Google Business Profile setup."
       },
       {
         "q": "What happens if something breaks after launch?",
-        "a": "You're covered for the first 30 days — if anything I built breaks, I'll fix it free of charge. After that, you can either call me when you need a fix or sign up for the monthly retainer (see below) for ongoing updates, security patches, and small changes whenever you need them."
+        "a": "You're covered. Every project includes the monthly retainer, which means I'm monitoring your site, pushing security patches, and handling fixes as part of the deal. If anything breaks, just call me — that's what the retainer is for."
       },
       {
-        "q": "What's the monthly retainer and is it required?",
-        "a": "The retainer is completely optional — you can do a one-time build with no ongoing commitment if you'd rather. But for $50/month, the retainer covers ongoing maintenance, security updates, hosting checks, small content changes (text edits, new photos, hours updates, etc.), and priority response when you call. As a bonus, signing up for the retainer takes $200 off your initial build cost. Most clients find it pays for itself just from the changes they'd otherwise call about anyway."
+        "q": "What's the monthly retainer?",
+        "a": "Every project includes a $50/month retainer that covers hosting, security updates, uptime monitoring, content changes (new photos, updated hours, added services — just text me), and a monthly traffic report so you can see what your site is doing. It's less than one service call for most trades, and it means you never have to think about your website — that's my job."
       },
       {
-        "q": "Can I cancel the retainer if I don't need it anymore?",
-        "a": "Yes, anytime. No long-term contract, no early-cancel fees, no fine print. Just give me 30 days notice and we'll wind it down. If you ever want to pick it back up later, the door's always open. The $200 build discount is yours to keep either way — I'd rather earn your trust than lock you in."
+        "q": "Can I cancel the retainer?",
+        "a": "Yes, anytime with 30 days notice. No long-term contract, no early-cancel fees, no fine print. If you cancel, I'll hand over your site files and help you get set up elsewhere if you want. If you ever want to come back, the door's open. I'd rather earn your trust than lock you in."
       },
       {
         "q": "Do you only work with businesses in Erath County?",

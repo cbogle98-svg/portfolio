@@ -1,56 +1,41 @@
 ---
 import config from '../data/config.json';
+// Renamed from "Hosting" to retainer value section.
+// Kept the filename to avoid changing index.astro imports.
 ---
 
-<section id="hosting" class="py-32 border-t border-b border-slate-200" style="background:white">
+<section id="retainer" class="py-32 border-t border-b border-slate-200" style="background:white">
   <div class="max-w-6xl mx-auto px-7">
     <div class="text-center max-w-2xl mx-auto mb-16">
       <div class="text-xs uppercase tracking-[0.3em] font-medium mb-3" style="color:#78350F">
-        {config.hosting.eyebrow}
+        {config.retainer.eyebrow}
       </div>
       <h2 class="text-4xl md:text-5xl font-light mb-4 leading-[1.1] tracking-tight" style="color:#1C1917">
-        {config.hosting.headline1}<br />{config.hosting.headline2}
+        {config.retainer.headline1}<br />{config.retainer.headline2}
       </h2>
       <p class="text-base leading-relaxed text-slate-500">
-        {config.hosting.subhead}
+        {config.retainer.subhead}
       </p>
     </div>
-    <div class="grid md:grid-cols-[1.1fr_0.9fr] gap-6 max-w-5xl mx-auto">
-      {config.hosting.options.map(opt => (
-        <div class={`rounded-2xl p-12 relative overflow-hidden transition hover:-translate-y-1 ${opt.type === 'primary' ? 'text-white shadow-2xl' : 'bg-slate-50 border border-slate-200'}`}
-          style={opt.type === 'primary' ? 'background:var(--navy);box-shadow:0 30px 60px rgba(28,25,23,0.20)' : ''}>
-          {opt.type === 'primary' && (
-            <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full pointer-events-none"
-              style="background:radial-gradient(circle, rgba(217,119,6,0.18), transparent 70%)"></div>
-          )}
-          <div class={`inline-block text-[11px] font-bold uppercase tracking-[0.15em] px-3 py-1.5 rounded-full mb-4 relative z-10 ${opt.type === 'primary' ? 'text-white' : 'bg-slate-200 text-slate-600'}`}
-            style={opt.type === 'primary' ? 'background:var(--accent)' : ''}>
-            {opt.pill}
-          </div>
-          <h3 class={`text-3xl font-extrabold mb-3.5 leading-tight relative z-10 ${opt.type === 'primary' ? 'text-white' : 'text-slate-900'}`}>
-            {opt.title}
-          </h3>
-          <p class={`text-base leading-relaxed mb-6 relative z-10 ${opt.type === 'primary' ? 'text-slate-400' : 'text-slate-500'}`}>
-            {opt.description}
-          </p>
-          <ul class="flex flex-col gap-3 mb-7 relative z-10">
-            {opt.features.map(feature => (
-              <li class={`flex items-start gap-2.5 text-sm ${opt.type === 'primary' ? 'text-slate-400' : 'text-slate-600'}`}>
-                <span class="font-bold text-base flex-shrink-0"
-                  style={opt.type === 'primary' ? 'color:var(--accent-light)' : 'color:var(--accent)'}>✓</span>
-                {feature}
-              </li>
-            ))}
-          </ul>
-          <div class={`flex items-baseline gap-1.5 pt-5 border-t relative z-10 ${opt.type === 'primary' ? 'border-white/10' : 'border-slate-200'}`}>
-            <span class={`text-3xl font-extrabold leading-none ${opt.type === 'primary' ? 'text-white' : 'text-slate-900'}`}
-              style="font-family:var(--font-heading)">{opt.price}</span>
-            <span class={`text-xs ${opt.type === 'primary' ? 'text-slate-400' : 'text-slate-500'}`}>
-              {opt.priceLabel}
-            </span>
-          </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mb-12">
+      {config.retainer.features.map(feature => (
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-8 transition hover:-translate-y-1 hover:shadow-lg">
+          <div class="text-3xl mb-4">{feature.icon}</div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">{feature.title}</h3>
+          <p class="text-sm text-slate-500 leading-relaxed">{feature.description}</p>
         </div>
       ))}
+    </div>
+
+    <div class="text-center max-w-2xl mx-auto">
+      <div class="inline-flex items-center gap-3 rounded-full px-6 py-3 border border-slate-200 bg-white shadow-sm mb-6">
+        <span class="text-3xl font-extrabold text-slate-900" style="font-family:var(--font-heading)">$50</span>
+        <span class="text-sm text-slate-500">/month — included with every project</span>
+      </div>
+      <p class="text-sm text-slate-500 leading-relaxed">
+        {config.retainer.ownership}
+      </p>
     </div>
   </div>
 </section>
