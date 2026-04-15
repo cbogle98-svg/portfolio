@@ -38,8 +38,12 @@ const formatPrice = (n: number) => n.toLocaleString('en-US');
               {formatPrice(tier.price)}
             </span>
           </div>
-          <div class="text-xs font-semibold mb-4" style="color:var(--accent)">
-            + ${config.pricing.retainerMonthly}/mo retainer included
+          <div class="text-xs uppercase tracking-wider text-slate-400 font-medium mb-3">
+            one-time build cost
+          </div>
+          <div class="flex items-baseline gap-2 mb-4 pb-3 border-b border-slate-100">
+            <span class="text-sm font-bold" style="color:var(--accent)">+ ${config.pricing.retainerMonthly}/mo</span>
+            <span class="text-xs text-slate-500">ongoing · hosting &amp; support</span>
           </div>
           <p class="text-sm text-slate-500 mb-6 leading-relaxed">{tier.description}</p>
 
@@ -64,7 +68,7 @@ const formatPrice = (n: number) => n.toLocaleString('en-US');
     </div>
 
     <p class="text-center mt-12 text-sm text-slate-500 max-w-3xl mx-auto">
-      <strong>Every package includes the ${config.pricing.retainerMonthly}/mo retainer</strong> — managed hosting, uptime monitoring, content updates, security patches, and a monthly traffic report. &nbsp;|&nbsp;
+      <strong>Build cost is a one-time fee. The ${config.pricing.retainerMonthly}/mo starts when your site goes live</strong> and covers managed hosting, uptime monitoring, content updates, security patches, and a monthly traffic report. Cancel anytime. &nbsp;|&nbsp;
       <a href="#contact" class="font-semibold" style="color:var(--accent)">Have something custom? Let's talk →</a>
     </p>
   </div>
