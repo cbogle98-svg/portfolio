@@ -38,6 +38,19 @@ const escapeHtml = (s: string) =>
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#39;");
 
+// Strip CR/LF so user input can't inject extra email headers via subject / reply-to.
+const stripCrlf = (s: string) => s.replace(/[\r\n]+/g, " ").trim();
+
+// Conservative per-field length caps. Blocks unbounded payloads and makes abuse cheap.
+const LIMITS = {
+  name: 200,
+  email: 320, // RFC 5321 max local+domain
+  phone: 50,
+  service: 200,
+  message: 5000,
+  businessName: 200,
+} as const;
+
 export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   let data: ContactPayload;
   const contentType = request.headers.get("content-type") || "";
@@ -77,32 +90,49 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   }
 
   if (!recipient) {
-    return json(500, { ok: false, error: "Recipient email not configured." });
+    return json(500, { ok: false, error: "Configuration error. Contact the site owner." });
   }
 
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return json(400, { ok: false, error: "Please enter a valid email address." });
   }
 
-  // Turnstile verification
+  if (
+    name.length > LIMITS.name ||
+    email.length > LIMITS.email ||
+    phone.length > LIMITS.phone ||
+    service.length > LIMITS.service ||
+    message.length > LIMITS.message ||
+    businessName.length > LIMITS.businessName
+  ) {
+    return json(400, { ok: false, error: "One or more fields exceeded the maximum length." });
+  }
+
+  // Turnstile verification — required, not optional.
   const turnstileToken = data["cf-turnstile-response"];
-  if (turnstileToken && env.TURNSTILE_SECRET_KEY) {
-    const verify = await fetch(
-      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
-      {
-        method: "POST",
-        headers: { "content-type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({
-          secret: env.TURNSTILE_SECRET_KEY,
-          response: turnstileToken,
-          remoteip: request.headers.get("CF-Connecting-IP") || "",
-        }),
-      }
-    );
-    const result = (await verify.json()) as { success: boolean };
-    if (!result.success) {
-      return json(400, { ok: false, error: "Captcha verification failed. Please try again." });
+  if (!turnstileToken) {
+    return json(400, { ok: false, error: "Captcha token missing. Please refresh and try again." });
+  }
+
+  if (!env.TURNSTILE_SECRET_KEY) {
+    return json(500, { ok: false, error: "Configuration error. Contact the site owner." });
+  }
+
+  const verify = await fetch(
+    "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+    {
+      method: "POST",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        secret: env.TURNSTILE_SECRET_KEY,
+        response: turnstileToken,
+        remoteip: request.headers.get("CF-Connecting-IP") || "",
+      }),
     }
+  );
+  const result = (await verify.json()) as { success: boolean };
+  if (!result.success) {
+    return json(400, { ok: false, error: "Captcha verification failed. Please try again." });
   }
 
   // Send via Resend
@@ -110,7 +140,9 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     return json(500, { ok: false, error: "Email service not configured." });
   }
 
-  const subjectLine = `${subjectPrefix} — ${name}${service ? ` (${service})` : ""}`;
+  const subjectLine = stripCrlf(
+    `${subjectPrefix} — ${name}${service ? ` (${service})` : ""}`
+  );
 
   const htmlBody = `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
