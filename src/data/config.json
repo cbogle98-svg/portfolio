@@ -46,32 +46,32 @@
     "subhead": "From a brand-new website to a full refresh of what you've got, I handle it all so you can focus on running your business.",
     "items": [
       {
-        "icon": "🎨",
+        "icon": "design",
         "title": "Custom Web Design",
         "description": "Unique, hand-crafted designs tailored to your brand and your customers. No cookie-cutter templates."
       },
       {
-        "icon": "📱",
+        "icon": "mobile",
         "title": "Mobile-First Development",
         "description": "Over half your customers are browsing on their phone. Every site I build looks and works perfectly on any screen size."
       },
       {
-        "icon": "🔍",
+        "icon": "seo",
         "title": "Local SEO",
         "description": "Get found when people search 'near me.' I optimize your site for local search so Erath County customers find you first."
       },
       {
-        "icon": "⚡",
+        "icon": "hosting",
         "title": "Fast & Managed Hosting",
         "description": "Don't want to deal with servers, SSL certificates, or 'why is my site down?' emails. Let me host it for you — lightning fast, always online."
       },
       {
-        "icon": "💬",
+        "icon": "copy",
         "title": "Content & Copywriting",
         "description": "Don't know what to write? I'll craft the words for your site that speak directly to your customers and get them to take action."
       },
       {
-        "icon": "🔧",
+        "icon": "support",
         "title": "Ongoing Support",
         "description": "Websites aren't set-and-forget. I offer maintenance plans to keep things updated, secure, and running smoothly year-round."
       }
