@@ -4,12 +4,17 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="py-10 border-t" style="background:#1C1917;border-color:rgba(231,229,228,0.08)">
-  <div class="max-w-6xl mx-auto px-7 flex flex-col md:flex-row items-center justify-between gap-3">
+  <div class="max-w-6xl mx-auto px-7 flex flex-col md:flex-row items-center justify-between gap-4">
     <div class="flex items-center gap-3">
       <img src="/brand/logo-horizontal-light.svg" alt={config.owner.businessName} class="h-7 w-auto" />
     </div>
+    <nav class="flex items-center gap-5 text-xs" style="color:#A8A29E;letter-spacing:0.5px">
+      <a href="/privacy" class="hover:text-white transition-colors" style="color:#A8A29E;text-decoration:none">Privacy</a>
+      <span aria-hidden="true">·</span>
+      <a href="/terms" class="hover:text-white transition-colors" style="color:#A8A29E;text-decoration:none">Terms</a>
+    </nav>
     <p class="text-xs" style="color:#A8A29E;letter-spacing:0.5px">
-      © {year} {config.owner.businessLegalName} — {config.owner.location} — All Rights Reserved
+      © {year} {config.owner.businessLegalName} — {config.owner.location}
     </p>
   </div>
 </footer>
