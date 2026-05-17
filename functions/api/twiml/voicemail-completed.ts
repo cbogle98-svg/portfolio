@@ -16,6 +16,18 @@
 
 interface Env {
   RESEND_API_KEY: string;
+  NOTIFY_INTERNAL_TOKEN?: string;
+}
+
+async function pushNotify(env: Env, payload: { event_type: string; title: string; message: string; url?: string; priority?: 'low' | 'normal' | 'high' }): Promise<void> {
+  if (!env.NOTIFY_INTERNAL_TOKEN) return;
+  try {
+    await fetch('https://bosqueworks-demos.pages.dev/api/notify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-Notify-Token': env.NOTIFY_INTERNAL_TOKEN },
+      body: JSON.stringify(payload),
+    });
+  } catch { /* non-blocking */ }
 }
 
 const RECIPIENT = "cody@bosqueworks.com";
@@ -46,6 +58,15 @@ async function handleRecording(env: Env, formData: FormData): Promise<Response> 
   const duration = formData.get("RecordingDuration")?.toString() || "?";
   const callSid = formData.get("CallSid")?.toString() || "unknown";
   const recordingSid = formData.get("RecordingSid")?.toString() || "unknown";
+
+  // Push notification — fire-and-forget, doesn't block email send
+  pushNotify(env, {
+    event_type: 'voicemail.received',
+    title: `Voicemail from ${from}`,
+    message: `${duration}s recording — transcript may follow in a few minutes.`,
+    url: recordingUrl,
+    priority: 'high',
+  });
 
   return sendEmail(env, {
     subject: `New voicemail from ${from} · Stephenville Roofing Pros`,
