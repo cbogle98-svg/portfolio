@@ -5,11 +5,86 @@ import config from '../data/config.json';
 interface Props {
   title?: string;
   description?: string;
+  /** Override OG image — defaults to the site logo. Should be an absolute URL. */
+  ogImage?: string;
+  /** Schema.org type override — defaults to no per-page schema; the Layout always emits ProfessionalService for the site. */
+  schemaType?: 'WebPage' | 'Article' | 'AboutPage' | 'ContactPage';
 }
 
-const { title, description } = Astro.props;
+const { title, description, ogImage, schemaType } = Astro.props;
+
+const SITE_URL = 'https://bosqueworks.com';
 const pageTitle = title ?? `${config.owner.name} — ${config.owner.title} — ${config.owner.location}`;
 const pageDesc = description ?? `${config.owner.tagline}. Based in ${config.owner.location}, serving ${config.owner.serviceArea}.`;
+
+// Canonical URL — strip trailing slash to keep consistent (Astro emits /foo/ by default but we canonical to /foo)
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+const canonicalUrl = `${SITE_URL}${pathname === '/' ? '/' : pathname}`;
+
+const ogImageUrl = ogImage ?? `${SITE_URL}/brand/logo-horizontal-light.svg`;
+
+// Schema.org: site-wide ProfessionalService block. Search engines build a knowledge graph
+// from this — especially valuable for local services (rich snippets, GBP linkage, etc.).
+const professionalServiceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  '@id': `${SITE_URL}/#business`,
+  name: config.owner.businessName,
+  alternateName: config.owner.businessLegalName,
+  description: pageDesc,
+  url: SITE_URL,
+  telephone: config.owner.phone,
+  email: config.owner.email,
+  image: `${SITE_URL}/brand/logo-horizontal-light.svg`,
+  logo: `${SITE_URL}/brand/logo-horizontal-light.svg`,
+  priceRange: '$800-$3,500 + $50/mo retainer',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Stephenville',
+    addressRegion: 'TX',
+    addressCountry: 'US',
+  },
+  areaServed: [
+    { '@type': 'AdministrativeArea', name: 'Erath County, TX' },
+    { '@type': 'AdministrativeArea', name: 'Hood County, TX' },
+    { '@type': 'AdministrativeArea', name: 'Comanche County, TX' },
+    { '@type': 'AdministrativeArea', name: 'Eastland County, TX' },
+    { '@type': 'AdministrativeArea', name: 'Somervell County, TX' },
+    { '@type': 'AdministrativeArea', name: 'Palo Pinto County, TX' },
+  ],
+  founder: {
+    '@type': 'Person',
+    name: config.owner.name,
+    jobTitle: config.owner.title,
+    url: SITE_URL,
+  },
+  serviceType: [
+    'Custom web design',
+    'Mobile-first development',
+    'Local SEO',
+    'Managed hosting',
+    'Content writing',
+    'Google Business Profile setup',
+  ],
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '09:00',
+    closes: '17:00',
+  },
+  sameAs: [], // Add social URLs here as they exist
+};
+
+const webPageSchema = schemaType
+  ? {
+      '@context': 'https://schema.org',
+      '@type': schemaType,
+      name: pageTitle,
+      description: pageDesc,
+      url: canonicalUrl,
+      isPartOf: { '@id': `${SITE_URL}/#business` },
+    }
+  : null;
 ---
 
 <!doctype html>
@@ -17,13 +92,38 @@ const pageDesc = description ?? `${config.owner.tagline}. Based in ${config.owne
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Primary meta -->
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDesc} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={config.owner.businessName} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDesc} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDesc} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <!-- Icons + fonts -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{pageTitle}</title>
-    <meta name="description" content={pageDesc} />
+
+    <!-- Schema.org structured data (LocalBusiness/ProfessionalService) -->
+    <script type="application/ld+json" set:html={JSON.stringify(professionalServiceSchema)} />
+    {webPageSchema && <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />}
+
     <style is:global define:vars={{
       navy: config.brand.navy,
       navyLight: config.brand.navyLight,
