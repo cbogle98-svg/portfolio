@@ -1,0 +1,81 @@
+---
+import config from '../data/config.json';
+
+const formatPrice = (n: number) => n.toLocaleString('en-US');
+---
+
+<section id="beyond-websites" class="py-32" style="background:#FFFFFF">
+  <div class="max-w-6xl mx-auto px-7">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <div class="text-xs uppercase tracking-[0.3em] font-medium mb-3" style="color:#78350F">
+        {config.beyondWebsites.eyebrow}
+      </div>
+      <h2 class="text-4xl md:text-5xl font-semibold mb-4 leading-[1.1] tracking-tight" style="color:#1C1917">
+        {config.beyondWebsites.headline1}<br />{config.beyondWebsites.headline2}
+      </h2>
+      <p class="text-base leading-relaxed text-slate-500">
+        {config.beyondWebsites.subhead}
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      {config.beyondWebsites.items.map(item => (
+        <div class="bg-white border border-slate-200 rounded-2xl p-10 flex flex-col transition hover:-translate-y-1.5 hover:shadow-2xl hover:border-[var(--accent)]">
+          <div class="rounded-xl flex items-center justify-center mb-6"
+            style="background:var(--accent-glow,#FEF3C7);width:52px;height:52px;color:var(--accent,#D97706)">
+            {item.icon === 'map-pin' && (
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 7-8 13-8 13s-8-6-8-13a8 8 0 0 1 16 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            )}
+            {item.icon === 'target' && (
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="6"/>
+                <circle cx="12" cy="12" r="2"/>
+              </svg>
+            )}
+          </div>
+          <h3 class="text-2xl font-bold mb-3 text-slate-900" style="font-family:var(--font-body)">
+            {item.title}
+          </h3>
+          <div class="flex items-baseline gap-1.5 mb-1">
+            <span class="text-lg font-bold text-slate-800">$</span>
+            <span class="text-4xl font-extrabold text-slate-900 leading-none tracking-tight"
+              style="font-family:var(--font-heading)">
+              {formatPrice(item.price)}
+            </span>
+          </div>
+          <div class="text-xs uppercase tracking-wider text-slate-400 font-medium mb-5 pb-4 border-b border-slate-100">
+            {item.priceLabel}
+          </div>
+          <p class="text-sm leading-relaxed text-slate-600 mb-6">
+            {item.description}
+          </p>
+          <ul class="flex flex-col gap-3 mb-8 flex-1">
+            {item.features.map(feature => (
+              <li class="flex items-start gap-2.5 text-sm leading-snug text-slate-600">
+                <span class="font-bold text-base flex-shrink-0" style="color:var(--accent,#D97706)">✓</span>
+                {feature}
+              </li>
+            ))}
+          </ul>
+          <a
+            href="#contact"
+            class="block text-center px-6 py-3.5 rounded-lg font-bold text-sm transition hover:-translate-y-0.5 text-white"
+            style="background:var(--accent,#D97706)"
+          >
+            {item.ctaText}
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <p class="text-center mt-12 text-sm text-slate-500 max-w-3xl mx-auto">
+      Want both, or want one alongside a website?
+      <a href="#contact" class="font-semibold" style="color:var(--accent,#D97706)">Tell us about your business →</a>
+      and we'll put together a package.
+    </p>
+  </div>
+</section>

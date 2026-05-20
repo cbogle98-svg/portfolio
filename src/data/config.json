@@ -233,6 +233,44 @@
     ],
     "ownership": "Your website is yours. Your domain is registered in your name. If you ever want to leave, I hand over everything — files, domain, the works. No lock-in, ever."
   },
+  "beyondWebsites": {
+    "eyebrow": "More Than Websites",
+    "headline1": "Other Ways",
+    "headline2": "We Help You Grow",
+    "subhead": "Not every business needs a new website. These two services are standalone. Buy either one without committing to a full build.",
+    "items": [
+      {
+        "icon": "map-pin",
+        "title": "Google Business Profile Setup",
+        "price": 199,
+        "priceLabel": "one-time setup",
+        "description": "Already have a website but your Google Business Profile is empty, outdated, or wrong? We fix that. A clean GBP is what makes you show up when locals search 'near me'.",
+        "features": [
+          "Categories, hours, and services set up the way Google rewards",
+          "Photos uploaded, tagged, and named for local search",
+          "Q&A section primed with the questions customers actually ask",
+          "30-day check-in to refine based on early performance"
+        ],
+        "ctaText": "Set Up My GBP",
+        "ctaSubject": "GBP setup inquiry"
+      },
+      {
+        "icon": "target",
+        "title": "Lead Generation",
+        "price": 500,
+        "priceLabel": "per month, exclusive territory",
+        "description": "Qualified leads sent straight to your phone for contractors in your trade and area. Different from the lead services you've probably seen: one contractor per trade per territory, no sharing leads with three other guys racing to call first.",
+        "features": [
+          "Exclusive territory: one contractor per trade per area",
+          "Real-time delivery via SMS and email",
+          "Qualified homeowner leads, not tire-kickers",
+          "Cancel anytime, no long-term contract"
+        ],
+        "ctaText": "Check My Territory",
+        "ctaSubject": "Lead-gen territory check"
+      }
+    ]
+  },
   "faq": {
     "eyebrow": "Common Questions",
     "headline1": "Answers to What",
