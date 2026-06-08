@@ -1,0 +1,36 @@
+---
+import HuntProgramCard from './HuntProgramCard.astro';
+interface Props {
+  client: any;
+  slug: string;
+  variant?: 'home' | 'full';
+}
+const { client, slug, variant = 'full' } = Astro.props;
+const programs = client.outfitter?.programs ?? [];
+const isHome = variant === 'home';
+---
+
+<section class="py-20 md:py-28" style="background:var(--ccv-bone)">
+  <div class="max-w-6xl mx-auto px-6">
+    {isHome && (
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <div class="inline-flex items-center gap-3 mb-4">
+          <div class="w-8 h-px" style="background:var(--ccv-rust);opacity:0.6"></div>
+          <span class="text-[10px] uppercase tracking-[0.35em]" style="color:var(--ccv-rust)">Our Hunts</span>
+          <div class="w-8 h-px" style="background:var(--ccv-rust);opacity:0.6"></div>
+        </div>
+        <h2 class="text-4xl md:text-5xl mb-3" style="color:var(--ccv-night)">
+          Three Programs. One Standard.
+        </h2>
+        <p class="text-base md:text-lg leading-relaxed" style="color:var(--ccv-text-light)">
+          Whitetail, exotics, and waterfowl — managed properties, real terrain, no shortcuts.
+        </p>
+      </div>
+    )}
+    <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+      {programs.map((program: any) => (
+        <HuntProgramCard program={program} slug={slug} />
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,67 @@
+---
+const { client, slug } = Astro.props as { client: any; slug: string };
+const o = client.outfitter ?? {};
+const hero = o.hero ?? {};
+const logo = o.logo;
+const rawPhone = client.business.phone ?? '';
+const hasPhone = rawPhone && !rawPhone.startsWith('REPLACE_');
+const phoneDigits = hasPhone ? rawPhone.replace(/\D/g, '') : '';
+---
+
+<section class="relative overflow-hidden" style="background:linear-gradient(135deg, var(--ccv-night) 0%, var(--ccv-sage) 110%)">
+  <!-- subtle noise/texture grid using radial gradients -->
+  <div class="absolute inset-0 opacity-20 pointer-events-none"
+    style="background-image: radial-gradient(circle at 20% 30%, rgba(232,222,197,0.15) 0, transparent 40%), radial-gradient(circle at 80% 70%, rgba(139,69,19,0.18) 0, transparent 45%);">
+  </div>
+
+  <div class="relative max-w-5xl mx-auto px-6 py-24 md:py-32 text-center">
+    {logo && (
+      <div class="flex justify-center mb-10">
+        <div class="rounded-full p-2 ring-1 ring-white/10" style="background:rgba(245,239,223,0.06)">
+          <img src={logo} alt={client.business.name} class="h-44 w-44 md:h-56 md:w-56 rounded-full object-cover" />
+        </div>
+      </div>
+    )}
+
+    <div class="inline-flex items-center gap-3 mb-6">
+      <div class="w-10 h-px" style="background:var(--ccv-cream);opacity:0.5"></div>
+      <span class="text-[11px] uppercase tracking-[0.35em]" style="color:var(--ccv-cream)">
+        {hero.eyebrow ?? client.business.address?.city}
+      </span>
+      <div class="w-10 h-px" style="background:var(--ccv-cream);opacity:0.5"></div>
+    </div>
+
+    <h1 class="text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.05] mb-6" style="color:var(--ccv-cream)">
+      {hero.headline ?? client.business.tagline}
+    </h1>
+
+    {hero.subline && (
+      <p class="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10" style="color:rgba(232,222,197,0.78)">
+        {hero.subline}
+      </p>
+    )}
+
+    <div class="flex flex-wrap items-center justify-center gap-4">
+      <a
+        href={`/${slug}/book/`}
+        class="inline-flex items-center gap-2 px-8 py-4 rounded-sm font-semibold text-sm uppercase tracking-[0.15em] transition hover:-translate-y-0.5 hover:shadow-2xl"
+        style="background:var(--ccv-rust);color:var(--ccv-cream)"
+      >
+        {hero.primaryCta ?? 'Book Your Hunt'} →
+      </a>
+      <a
+        href={`/${slug}/hunts/`}
+        class="inline-flex items-center gap-2 px-8 py-4 rounded-sm font-semibold text-sm uppercase tracking-[0.15em] border transition hover:bg-white/5"
+        style="border-color:rgba(232,222,197,0.4);color:var(--ccv-cream)"
+      >
+        {hero.secondaryCta ?? 'Explore Hunts'}
+      </a>
+    </div>
+
+    {hasPhone && (
+      <div class="mt-10 text-sm" style="color:rgba(232,222,197,0.6)">
+        Or call <a href={`tel:${phoneDigits}`} class="underline underline-offset-4 hover:opacity-80" style="color:var(--ccv-cream)">{rawPhone}</a>
+      </div>
+    )}
+  </div>
+</section>

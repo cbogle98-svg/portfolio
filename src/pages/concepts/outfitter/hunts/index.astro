@@ -1,0 +1,17 @@
+---
+// Lost Draw Outfitters — CONCEPT hunts page. /concepts/outfitter/hunts
+import lostDraw from '../../../../data/lost-draw';
+import OutfitterLayout from '../../../../components/outfitter/OutfitterLayout.astro';
+import OutfitterPageHero from '../../../../components/outfitter/OutfitterPageHero.astro';
+import HuntsList from '../../../../components/outfitter/HuntsList.astro';
+import BookingForm from '../../../../components/outfitter/BookingForm.astro';
+
+const client = lostDraw;
+const slug = 'concepts/outfitter';
+---
+
+<OutfitterLayout client={client} slug={slug} title={`Our Hunts — ${client.business.name}`} currentPage="hunts">
+  <OutfitterPageHero eyebrow={client.business.industry} title="Our Hunts" subtitle="Three programs. One standard." />
+  <HuntsList client={client} slug={slug} variant="full" />
+  <BookingForm client={client} slug={slug} variant="full" />
+</OutfitterLayout>

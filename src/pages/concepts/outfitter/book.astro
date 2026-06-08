@@ -1,0 +1,15 @@
+---
+// Lost Draw Outfitters — CONCEPT booking page. /concepts/outfitter/book
+import lostDraw from '../../../data/lost-draw';
+import OutfitterLayout from '../../../components/outfitter/OutfitterLayout.astro';
+import OutfitterPageHero from '../../../components/outfitter/OutfitterPageHero.astro';
+import BookingForm from '../../../components/outfitter/BookingForm.astro';
+
+const client = lostDraw;
+const slug = 'concepts/outfitter';
+---
+
+<OutfitterLayout client={client} slug={slug} title={`Book Your Hunt — ${client.business.name}`} currentPage="book">
+  <OutfitterPageHero eyebrow={client.business.industry} title="Book Your Hunt" subtitle="Tell us what you are after." />
+  <BookingForm client={client} slug={slug} variant="full" />
+</OutfitterLayout>

@@ -1,0 +1,268 @@
+---
+import config from '../../data/config.json';
+
+interface Props {
+  client: any;
+  slug: string;
+  variant?: 'compact' | 'full';
+}
+const { client, slug, variant = 'full' } = Astro.props;
+const b = client.outfitter?.booking ?? {};
+const programs = client.outfitter?.programs ?? [];
+const rawPhone = client.business.phone ?? '';
+const hasPhone = rawPhone && !rawPhone.startsWith('REPLACE_');
+const phoneDigits = hasPhone ? rawPhone.replace(/\D/g, '') : '';
+const hasEmail = client.business.email && !client.business.email.startsWith('REPLACE_');
+const isFull = variant === 'full';
+
+// Routes through the portfolio's existing /api/contact (Resend + Turnstile).
+const recipientEmail = client.contact?.recipientEmail ?? config.contact.recipientEmail;
+const subjectPrefix = client.contact?.subjectPrefix ?? 'Lost Draw (concept) hunt inquiry';
+const turnstileSiteKey = config.contact.turnstileSiteKey ?? '';
+const turnstileEnabled = turnstileSiteKey && turnstileSiteKey !== 'REPLACE_WITH_TURNSTILE_SITE_KEY';
+
+const bosqueWorksPhone = '2542772131';
+const bosqueWorksPhoneDisplay = '(254) 277-2131';
+---
+
+<section class="py-20 md:py-28" style="background:var(--ccv-night);color:var(--ccv-cream)">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class:list={[isFull ? 'grid md:grid-cols-2 gap-12 lg:gap-20 items-start' : 'max-w-2xl mx-auto']}>
+      <div>
+        {b.eyebrow && (
+          <div class="inline-flex items-center gap-3 mb-4">
+            <div class="w-8 h-px" style="background:var(--ccv-cream);opacity:0.5"></div>
+            <span class="text-[10px] uppercase tracking-[0.35em]" style="opacity:0.85">{b.eyebrow}</span>
+          </div>
+        )}
+        <h2 class="text-3xl md:text-5xl mb-5">{b.headline ?? 'Book Your Hunt'}</h2>
+        {b.subhead && (
+          <p class="text-base md:text-lg leading-relaxed mb-8" style="opacity:0.78">
+            {b.subhead}
+          </p>
+        )}
+
+        <form data-outfitter-booking action="/api/contact" method="POST" class="space-y-4">
+          <input type="hidden" name="recipient_email" value={recipientEmail} />
+          <input type="hidden" name="subject_prefix" value={subjectPrefix} />
+          <input type="hidden" name="business_name" value={client.business.name} />
+          <!-- Honeypot: real users never see or fill this -->
+          <input type="text" name="website" class="hidden" style="display:none;position:absolute;left:-9999px" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <input
+              type="text"
+              name="name"
+              placeholder="Your name"
+              required
+              class="w-full px-4 py-3 rounded-sm border bg-white/5 placeholder-white/40 focus:outline-none focus:border-white/40"
+              style="border-color:rgba(232,222,197,0.2);color:var(--ccv-cream)"
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              required
+              class="w-full px-4 py-3 rounded-sm border bg-white/5 placeholder-white/40 focus:outline-none focus:border-white/40"
+              style="border-color:rgba(232,222,197,0.2);color:var(--ccv-cream)"
+            />
+          </div>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Phone"
+              class="w-full px-4 py-3 rounded-sm border bg-white/5 placeholder-white/40 focus:outline-none focus:border-white/40"
+              style="border-color:rgba(232,222,197,0.2);color:var(--ccv-cream)"
+            />
+            <select
+              name="service_interest"
+              class="w-full px-4 py-3 rounded-sm border bg-white/5 focus:outline-none focus:border-white/40"
+              style="border-color:rgba(232,222,197,0.2);color:var(--ccv-cream)"
+            >
+              <option value="" style="background:var(--ccv-night)">Hunt of interest…</option>
+              {programs.map((p: any) => (
+                <option value={p.name} style="background:var(--ccv-night)">{p.name}</option>
+              ))}
+              <option value="Not sure yet" style="background:var(--ccv-night)">Not sure yet</option>
+            </select>
+          </div>
+          {isFull && (
+            <div class="grid sm:grid-cols-2 gap-4">
+              <input
+                type="text"
+                name="dates"
+                placeholder="Preferred dates"
+                class="w-full px-4 py-3 rounded-sm border bg-white/5 placeholder-white/40 focus:outline-none focus:border-white/40"
+                style="border-color:rgba(232,222,197,0.2);color:var(--ccv-cream)"
+              />
+              <input
+                type="number"
+                name="party"
+                placeholder="Party size"
+                min="1"
+                class="w-full px-4 py-3 rounded-sm border bg-white/5 placeholder-white/40 focus:outline-none focus:border-white/40"
+                style="border-color:rgba(232,222,197,0.2);color:var(--ccv-cream)"
+              />
+            </div>
+          )}
+          <textarea
+            name="message"
+            rows={isFull ? 4 : 3}
+            placeholder="Tell us what you're after…"
+            class="w-full px-4 py-3 rounded-sm border bg-white/5 placeholder-white/40 focus:outline-none focus:border-white/40 resize-none"
+            style="border-color:rgba(232,222,197,0.2);color:var(--ccv-cream)"
+          ></textarea>
+
+          {turnstileEnabled && (
+            <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-theme="dark"></div>
+          )}
+
+          <div data-outfitter-error class="text-sm p-3 rounded-sm" style="display:none;background:rgba(220,38,38,0.15);color:#FCA5A5;border:1px solid rgba(220,38,38,0.4)"></div>
+
+          <button
+            type="submit"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-9 py-4 rounded-sm font-semibold text-sm uppercase tracking-[0.15em] transition hover:-translate-y-0.5 hover:shadow-2xl disabled:opacity-60 disabled:cursor-not-allowed"
+            style="background:var(--ccv-rust);color:var(--ccv-cream)"
+            data-default-label="Send Inquiry →"
+            data-pending-label="Sending…"
+          >
+            Send Inquiry →
+          </button>
+        </form>
+
+        <div data-outfitter-success class="p-6 rounded-sm border" style="display:none;border-color:var(--ccv-rust);background:rgba(139,69,19,0.15)">
+          <div class="text-lg mb-2" style="font-family:var(--font-heading);color:var(--ccv-cream)">
+            Inquiry sent — thanks.
+          </div>
+          <p class="text-sm leading-relaxed" style="color:rgba(232,222,197,0.78)">
+            This is a concept site, so your inquiry just routed to <strong style="color:var(--ccv-cream)">Bosque Works</strong>.
+            On a real client site the same form delivers straight to the outfitter, with your email set as the reply-to —
+            one tap of "Reply" goes back to you.
+          </p>
+        </div>
+      </div>
+
+      {isFull && (
+        <aside class="space-y-8">
+          {hasPhone && (
+            <a href={`tel:${phoneDigits}`} class="block transition hover:opacity-85">
+              <div class="text-[10px] uppercase tracking-[0.3em] mb-2" style="opacity:0.55">Call</div>
+              <div class="text-3xl md:text-4xl" style="font-family:var(--font-heading);color:var(--ccv-rust)">
+                {rawPhone}
+              </div>
+            </a>
+          )}
+          {hasEmail && (
+            <a href={`mailto:${client.business.email}`} class="block transition hover:opacity-85">
+              <div class="text-[10px] uppercase tracking-[0.3em] mb-2" style="opacity:0.55">Email</div>
+              <div class="text-base break-all" style="color:rgba(232,222,197,0.85)">{client.business.email}</div>
+            </a>
+          )}
+          {client.business.serviceArea?.length > 0 && (
+            <div>
+              <div class="text-[10px] uppercase tracking-[0.3em] mb-2" style="opacity:0.55">Hunting</div>
+              <div class="text-base" style="color:rgba(232,222,197,0.85)">
+                {client.business.serviceArea.join(' · ')}
+              </div>
+            </div>
+          )}
+
+          <div class="mt-10 p-6 rounded-sm border" style="border-color:rgba(232,222,197,0.15);background:rgba(245,239,223,0.04)">
+            <div class="inline-block text-[10px] uppercase tracking-[0.3em] font-bold px-3 py-1.5 rounded-full mb-3" style="background:var(--ccv-rust);color:var(--ccv-cream)">
+              Concept Site
+            </div>
+            <div class="text-lg mb-2" style="font-family:var(--font-heading);color:var(--ccv-cream)">
+              Built by Bosque Works
+            </div>
+            <p class="text-sm leading-relaxed mb-4" style="color:rgba(232,222,197,0.7)">
+              {client.business.shortName ?? client.business.name} isn't a real outfitter — it's a design concept showing the kind of
+              multipage site Bosque Works builds for outdoor and experience brands. Want one like it for your business?
+            </p>
+            <a
+              href={`tel:${bosqueWorksPhone}`}
+              class="inline-flex items-center gap-2 px-5 py-2.5 rounded-sm font-semibold text-sm transition hover:-translate-y-0.5"
+              style="background:var(--ccv-cream);color:var(--ccv-night)"
+            >
+              {bosqueWorksPhoneDisplay} →
+            </a>
+          </div>
+        </aside>
+      )}
+    </div>
+  </div>
+</section>
+
+{turnstileEnabled && (
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer is:inline></script>
+)}
+
+<script>
+  function setupOutfitterBookingForms() {
+    const forms = document.querySelectorAll<HTMLFormElement>('form[data-outfitter-booking]');
+    forms.forEach((form) => {
+      if ((form as any)._wired) return;
+      (form as any)._wired = true;
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+        const errEl = form.querySelector<HTMLElement>('[data-outfitter-error]');
+        const sucEl = form.parentElement?.querySelector<HTMLElement>('[data-outfitter-success]');
+
+        if (errEl) {
+          errEl.style.display = 'none';
+          errEl.textContent = '';
+        }
+        if (btn) {
+          btn.disabled = true;
+          btn.textContent = btn.dataset.pendingLabel || 'Sending…';
+        }
+
+        // Build the payload the portfolio /api/contact endpoint expects.
+        // It reads name/email/phone/service_interest/message (+ recipient_email,
+        // subject_prefix, business_name, website honeypot, cf-turnstile-response).
+        // Fold the outfitter-specific dates/party fields into the message.
+        const fd = new FormData(form);
+        const hunt = (fd.get('service_interest') || '').toString().trim();
+        const dates = (fd.get('dates') || '').toString().trim();
+        const party = (fd.get('party') || '').toString().trim();
+        let message = (fd.get('message') || '').toString().trim();
+        const extras = [];
+        if (dates) extras.push(`Preferred dates: ${dates}`);
+        if (party) extras.push(`Party size: ${party}`);
+        if (extras.length) message = (message ? message + '\n\n' : '') + extras.join(' · ');
+        if (!message) message = hunt ? `Interested in ${hunt}.` : 'Hunt inquiry (no message provided).';
+        fd.set('message', message);
+        fd.delete('dates');
+        fd.delete('party');
+
+        try {
+          const res = await fetch('/api/contact', { method: 'POST', body: fd });
+          const payload = await res.json().catch(() => ({}));
+          if (!res.ok || !payload.ok) {
+            throw new Error(payload.error || `HTTP ${res.status}`);
+          }
+          form.style.display = 'none';
+          if (sucEl) sucEl.style.display = 'block';
+        } catch (err) {
+          if (errEl) {
+            errEl.textContent =
+              'Sorry — we could not send the inquiry. Please try again in a moment.';
+            errEl.style.display = 'block';
+          }
+          if (btn) {
+            btn.disabled = false;
+            btn.textContent = btn.dataset.defaultLabel || 'Send Inquiry →';
+          }
+          if ((window as any).turnstile?.reset) (window as any).turnstile.reset();
+        }
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupOutfitterBookingForms);
+  } else {
+    setupOutfitterBookingForms();
+  }
+</script>

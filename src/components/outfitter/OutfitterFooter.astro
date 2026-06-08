@@ -1,0 +1,40 @@
+---
+const { client } = Astro.props as { client: any };
+const year = new Date().getFullYear();
+const city = client.business.address?.city ?? '';
+const state = client.business.address?.state ?? 'TX';
+const logo = client.outfitter?.logo;
+const rawPhone = client.business.phone ?? '';
+const hasPhone = rawPhone && !rawPhone.startsWith('REPLACE_');
+const hasEmail = client.business.email && !client.business.email.startsWith('REPLACE_');
+---
+
+<footer class="py-14 border-t border-black/20" style="background:var(--ccv-night);color:var(--ccv-cream)">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row items-center md:items-start justify-between gap-8 text-center md:text-left">
+      <div class="flex items-center gap-4">
+        {logo && (
+          <img src={logo} alt={client.business.name} class="h-14 w-14 rounded-full object-cover border border-white/20" />
+        )}
+        <div>
+          <div class="text-xl leading-tight" style="font-family:var(--font-heading)">
+            {client.business.name}
+          </div>
+          <div class="text-xs tracking-[0.25em] uppercase mt-1 text-white/50">
+            {client.business.industry}
+          </div>
+        </div>
+      </div>
+
+      <div class="text-sm text-white/70 space-y-1">
+        {hasPhone && <div>{rawPhone}</div>}
+        {hasEmail && <div>{client.business.email}</div>}
+        <div>{city}{city ? ', ' : ''}{state}</div>
+      </div>
+    </div>
+
+    <div class="mt-10 pt-6 border-t border-white/10 text-center text-xs text-white/40">
+      © {year} {client.business.name} · Concept site by Bosque Works LLC · Not a real business
+    </div>
+  </div>
+</footer>

@@ -13,7 +13,7 @@ export default defineConfig({
   integrations: [
     sitemap({
       // Exclude internal API/management routes from the public sitemap
-      filter: (page) => !page.includes('/api/') && !page.includes('/manage'),
+      filter: (page) => !page.includes('/api/') && !page.includes('/manage') && !page.includes('/concepts/'),
     }),
   ],
 });

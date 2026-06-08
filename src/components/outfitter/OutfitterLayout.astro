@@ -1,0 +1,78 @@
+---
+import '../../styles/global.css';
+import OutfitterHeader from './OutfitterHeader.astro';
+import OutfitterFooter from './OutfitterFooter.astro';
+
+interface Props {
+  client: any;
+  slug: string;
+  title?: string;
+  description?: string;
+  currentPage?: string;
+}
+const { client, slug, title, description, currentPage } = Astro.props;
+const pageTitle = title ?? `${client.business.name} — ${client.business.tagline ?? client.business.industry}`;
+const city = client.business.address?.city ?? '';
+const state = client.business.address?.state ?? 'TX';
+const pageDesc = description ?? `${client.business.industry} — ${city}${city ? ', ' : ''}${state}.`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDesc} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rye&display=swap"
+      rel="stylesheet"
+    />
+    <style is:global define:vars={{
+      ccvSage: client.brand.primary,
+      ccvNight: client.brand.primaryDark,
+      ccvSageLight: client.brand.primaryLight,
+      ccvRust: client.brand.accent,
+      ccvBone: client.brand.background,
+      ccvCream: client.brand.surface,
+      ccvText: client.brand.text,
+      ccvTextLight: client.brand.textLight
+    }}>
+      body.outfitter {
+        --ccv-sage: var(--ccvSage);
+        --ccv-night: var(--ccvNight);
+        --ccv-sage-light: var(--ccvSageLight);
+        --ccv-rust: var(--ccvRust);
+        --ccv-bone: var(--ccvBone);
+        --ccv-cream: var(--ccvCream);
+        --ccv-text: var(--ccvText);
+        --ccv-text-light: var(--ccvTextLight);
+        --font-heading: 'Rye', Georgia, serif;
+        --font-body: Arial, Helvetica, sans-serif;
+        background: var(--ccv-bone);
+        color: var(--ccv-text);
+        font-family: var(--font-body);
+      }
+      body.outfitter h1,
+      body.outfitter h2,
+      body.outfitter h3,
+      body.outfitter h4,
+      body.outfitter h5,
+      body.outfitter h6 {
+        font-family: var(--font-heading);
+        font-weight: 400;
+        letter-spacing: 0.01em;
+      }
+    </style>
+  </head>
+  <body class="antialiased outfitter">
+    <OutfitterHeader client={client} slug={slug} currentPage={currentPage} />
+    <slot />
+    <OutfitterFooter client={client} />
+  </body>
+</html>

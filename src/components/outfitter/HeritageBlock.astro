@@ -1,0 +1,54 @@
+---
+interface Props {
+  client: any;
+  variant?: 'teaser' | 'full';
+}
+const { client, variant = 'full' } = Astro.props;
+const h = client.outfitter?.heritage ?? {};
+const logo = client.outfitter?.logo;
+const image = h.image;
+const isTeaser = variant === 'teaser';
+const body = h.body ?? [];
+const shownBody = isTeaser ? body.slice(0, 1) : body;
+const hasSide = Boolean(image || logo);
+---
+
+<section class="py-20 md:py-28" style="background:var(--ccv-sage);color:var(--ccv-cream)">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class:list={[hasSide ? 'grid md:grid-cols-5 gap-12 items-center' : 'max-w-3xl mx-auto']}>
+      <div class={hasSide ? 'md:col-span-3' : ''}>
+        {h.eyebrow && (
+          <div class="inline-flex items-center gap-3 mb-5">
+            <div class="w-8 h-px" style="background:var(--ccv-cream);opacity:0.5"></div>
+            <span class="text-[10px] uppercase tracking-[0.35em]" style="opacity:0.85">{h.eyebrow}</span>
+          </div>
+        )}
+        {h.headline && !isTeaser && (
+          <h2 class="text-3xl md:text-4xl leading-tight mb-8">{h.headline}</h2>
+        )}
+        {h.quote && (
+          <blockquote class="text-2xl md:text-3xl leading-snug italic mb-8 pl-5 border-l-2" style="border-color:var(--ccv-rust);font-family:var(--font-heading)">
+            "{h.quote}"
+          </blockquote>
+        )}
+        {shownBody.map((p: string) => (
+          <p class="text-base md:text-lg leading-relaxed mb-4" style="opacity:0.85">{p}</p>
+        ))}
+      </div>
+
+      {image ? (
+        <div class="md:col-span-2">
+          <div class="rounded-sm overflow-hidden ring-1 ring-white/15 shadow-2xl">
+            <img src={image} alt={client.business.name} class="w-full h-72 md:h-96 object-cover" />
+          </div>
+        </div>
+      ) : logo ? (
+        <div class="md:col-span-2 flex justify-center md:justify-end">
+          <div class="rounded-full p-2 ring-1 ring-white/15" style="background:rgba(245,239,223,0.06)">
+            <img src={logo} alt={client.business.name} class="h-48 w-48 md:h-60 md:w-60 rounded-full object-cover" />
+          </div>
+        </div>
+      ) : null}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,43 @@
+---
+interface Props {
+  client: any;
+  variant?: 'teaser' | 'full';
+}
+const { client, variant = 'full' } = Astro.props;
+const c = client.outfitter?.country ?? {};
+const stats = c.stats ?? [];
+const isFull = variant === 'full';
+---
+
+<section class="py-20 md:py-28" style="background:var(--ccv-bone)">
+  <div class="max-w-5xl mx-auto px-6">
+    {c.eyebrow && (
+      <div class="text-center mb-10">
+        <div class="inline-flex items-center gap-3 mb-3">
+          <div class="w-8 h-px" style="background:var(--ccv-rust);opacity:0.6"></div>
+          <span class="text-[10px] uppercase tracking-[0.35em]" style="color:var(--ccv-rust)">{c.eyebrow}</span>
+          <div class="w-8 h-px" style="background:var(--ccv-rust);opacity:0.6"></div>
+        </div>
+        {c.headline && (
+          <h2 class="text-4xl md:text-5xl mb-3" style="color:var(--ccv-night)">{c.headline}</h2>
+        )}
+        {isFull && c.subhead && (
+          <p class="text-base md:text-lg leading-relaxed max-w-2xl mx-auto" style="color:var(--ccv-text-light)">
+            {c.subhead}
+          </p>
+        )}
+      </div>
+    )}
+
+    <div class="grid sm:grid-cols-3 gap-8 mt-12">
+      {stats.map((s: any) => (
+        <div class="text-center px-4">
+          <div class="text-5xl md:text-6xl lg:text-7xl mb-3 leading-none" style="color:var(--ccv-rust);font-family:var(--font-heading)">
+            {s.value}
+          </div>
+          <div class="text-sm md:text-base" style="color:var(--ccv-text-light)">{s.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

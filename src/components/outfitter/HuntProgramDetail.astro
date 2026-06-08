@@ -1,0 +1,86 @@
+---
+interface Props {
+  client: any;
+  slug: string;
+  program: any;
+}
+const { client, slug, program } = Astro.props;
+const rawPhone = client.business.phone ?? '';
+const hasPhone = rawPhone && !rawPhone.startsWith('REPLACE_');
+const phoneDigits = hasPhone ? rawPhone.replace(/\D/g, '') : '';
+const programs = client.outfitter?.programs ?? [];
+const otherPrograms = programs.filter((p: any) => p.slug !== program.slug);
+---
+
+{program.image && (
+  <section class="relative" style="background:var(--ccv-night)">
+    <div class="relative w-full h-[42vh] md:h-[55vh] overflow-hidden">
+      <img src={program.image} alt={program.name} class="w-full h-full object-cover" />
+      <div class="absolute inset-0 pointer-events-none"
+        style="background:linear-gradient(180deg, rgba(31,38,32,0.1) 0%, transparent 45%, var(--ccv-bone) 100%)">
+      </div>
+    </div>
+  </section>
+)}
+
+<section class="py-16 md:py-20" style="background:var(--ccv-bone)">
+  <div class="max-w-3xl mx-auto px-6">
+    <div class="text-center mb-12">
+      {!program.image && program.icon && <div class="text-6xl mb-6 opacity-80">{program.icon}</div>}
+      <div class="text-[10px] uppercase tracking-[0.35em] mb-3" style="color:var(--ccv-rust)">
+        {program.season}
+      </div>
+      <h2 class="text-4xl md:text-5xl mb-4" style="color:var(--ccv-night)">{program.name}</h2>
+      <p class="text-lg italic" style="color:var(--ccv-text-light)">{program.summary}</p>
+    </div>
+
+    <div class="prose max-w-none mb-14">
+      <p class="text-base md:text-lg leading-relaxed" style="color:var(--ccv-text)">
+        {program.description}
+      </p>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+      <a
+        href={`/${slug}/book/`}
+        class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-sm font-semibold text-sm uppercase tracking-[0.15em] transition hover:-translate-y-0.5 hover:shadow-xl"
+        style="background:var(--ccv-rust);color:var(--ccv-cream)"
+      >
+        Inquire About This Hunt →
+      </a>
+      {hasPhone && (
+        <a
+          href={`tel:${phoneDigits}`}
+          class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-sm font-semibold text-sm uppercase tracking-[0.15em] border transition hover:bg-black/5"
+          style="border-color:var(--ccv-night);color:var(--ccv-night)"
+        >
+          Call {rawPhone}
+        </a>
+      )}
+    </div>
+  </div>
+
+  {otherPrograms.length > 0 && (
+    <div class="max-w-5xl mx-auto px-6 pt-12 border-t" style="border-color:rgba(31,38,32,0.12)">
+      <div class="text-center mb-8">
+        <div class="text-[10px] uppercase tracking-[0.35em]" style="color:var(--ccv-rust)">Other Programs</div>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-6">
+        {otherPrograms.map((p: any) => (
+          <a
+            href={`/${slug}/hunts/${p.slug}/`}
+            class="group flex items-center gap-5 p-6 rounded-sm border transition hover:-translate-y-0.5 hover:shadow-lg"
+            style="background:var(--ccv-cream);border-color:rgba(31,38,32,0.10)"
+          >
+            <div class="text-4xl opacity-80">{p.icon}</div>
+            <div class="flex-1">
+              <div class="text-2xl mb-1" style="color:var(--ccv-night);font-family:var(--font-heading)">{p.name}</div>
+              <div class="text-[10px] uppercase tracking-[0.25em]" style="color:var(--ccv-rust)">{p.season}</div>
+            </div>
+            <div class="text-xl group-hover:translate-x-1 transition" style="color:var(--ccv-rust)">→</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  )}
+</section>

@@ -1,0 +1,68 @@
+---
+interface Props {
+  client: any;
+  slug: string;
+  currentPage?: string;
+}
+const { client, slug, currentPage } = Astro.props;
+
+const rawPhone = client.business.phone ?? '';
+const hasPhone = rawPhone && !rawPhone.startsWith('REPLACE_');
+const phoneDigits = hasPhone ? rawPhone.replace(/\D/g, '') : '';
+
+const pages = client.pages ?? [];
+const navItems = pages.map((p: any) => ({
+  href: `/${slug}/${p.slug}/`,
+  label: p.navLabel ?? p.title,
+  slug: p.slug
+}));
+
+const logo = client.outfitter?.logo;
+---
+
+<header class="sticky top-0 z-50 backdrop-blur-md border-b border-black/10" style="background:rgba(31,38,32,0.92)">
+  <div class="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between gap-4">
+    <a href={`/${slug}/`} class="flex items-center gap-3 group">
+      {logo && (
+        <img src={logo} alt={client.business.name} class="h-12 w-12 rounded-full object-cover border border-white/20" />
+      )}
+      <div class="hidden sm:block">
+        <span class="block text-lg leading-tight" style="font-family:var(--font-heading);color:var(--ccv-cream)">
+          {client.business.name}
+        </span>
+        <span class="block text-[10px] tracking-[0.25em] uppercase mt-0.5 text-white/50">
+          {client.business.industry}
+        </span>
+      </div>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-7 text-sm">
+      <a
+        href={`/${slug}/`}
+        class="transition hover:text-white"
+        style={!currentPage ? `color:var(--ccv-cream);font-weight:600` : `color:rgba(232,222,197,0.7)`}
+      >
+        Home
+      </a>
+      {navItems.map((item: any) => (
+        <a
+          href={item.href}
+          class="transition hover:text-white"
+          style={item.slug === currentPage ? `color:var(--ccv-cream);font-weight:600` : `color:rgba(232,222,197,0.7)`}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    {hasPhone && (
+      <a
+        href={`tel:${phoneDigits}`}
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-sm font-semibold text-sm transition hover:-translate-y-0.5 hover:shadow-lg"
+        style="background:var(--ccv-rust);color:var(--ccv-cream)"
+      >
+        <span class="hidden sm:inline">{rawPhone}</span><span class="sm:hidden">Call</span>
+      </a>
+    )}
+  </div>
+</header>

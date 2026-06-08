@@ -1,0 +1,30 @@
+---
+// Lost Draw Outfitters — CONCEPT per-hunt detail pages.
+// /concepts/outfitter/hunts/{whitetail|exotics|waterfowl}
+import lostDraw from '../../../../data/lost-draw';
+import OutfitterLayout from '../../../../components/outfitter/OutfitterLayout.astro';
+import OutfitterPageHero from '../../../../components/outfitter/OutfitterPageHero.astro';
+import HuntProgramDetail from '../../../../components/outfitter/HuntProgramDetail.astro';
+
+export function getStaticPaths() {
+  const programs = lostDraw.outfitter?.programs ?? [];
+  return programs.map((program: any) => ({
+    params: { program: program.slug },
+    props: { program },
+  }));
+}
+
+const { program } = Astro.props;
+const client = lostDraw;
+const slug = 'concepts/outfitter';
+---
+
+<OutfitterLayout
+  client={client}
+  slug={slug}
+  title={`${program.name} — ${client.business.name}`}
+  currentPage="hunts"
+>
+  <OutfitterPageHero eyebrow={program.season} title={program.name} subtitle={program.summary} />
+  <HuntProgramDetail client={client} slug={slug} program={program} />
+</OutfitterLayout>

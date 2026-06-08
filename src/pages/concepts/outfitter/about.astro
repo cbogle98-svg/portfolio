@@ -1,0 +1,17 @@
+---
+// Lost Draw Outfitters — CONCEPT "Heritage" page. /concepts/outfitter/about
+import lostDraw from '../../../data/lost-draw';
+import OutfitterLayout from '../../../components/outfitter/OutfitterLayout.astro';
+import OutfitterPageHero from '../../../components/outfitter/OutfitterPageHero.astro';
+import HeritageBlock from '../../../components/outfitter/HeritageBlock.astro';
+import CountryStats from '../../../components/outfitter/CountryStats.astro';
+
+const client = lostDraw;
+const slug = 'concepts/outfitter';
+---
+
+<OutfitterLayout client={client} slug={slug} title={`Our Heritage — ${client.business.name}`} currentPage="about">
+  <OutfitterPageHero eyebrow={client.business.industry} title="Our Heritage" subtitle="Hunters first. Stewards always." />
+  <HeritageBlock client={client} variant="full" />
+  <CountryStats client={client} variant="full" />
+</OutfitterLayout>

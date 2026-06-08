@@ -1,0 +1,27 @@
+Lost Draw Outfitters (concept) — photo sources
+Auto-selected from Wikimedia Commons, filtered to Public Domain / CC0.
+
+hero-country.jpg
+  source : https://commons.wikimedia.org/wiki/File:Deer_Park_Prairie.jpg
+  license: CC0
+  author : Brendansoloughlin
+
+whitetail.jpg
+  source : https://commons.wikimedia.org/wiki/File:White-tailed_Deer_Buck_in_Velvet_(48804848567).jpg
+  license: Public domain
+  author : USFWS Mountain Prairie
+
+exotics.jpg
+  source : https://commons.wikimedia.org/wiki/File:Ammotragus_lervia_197008104.jpg
+  license: CC0
+  author : henrya
+
+waterfowl.jpg
+  source : https://commons.wikimedia.org/wiki/File:Arkansas_Mallard_Flying_(50933402092).jpg
+  license: Public domain
+  author : USFWS/Southeast
+
+
+heritage.jpg
+  source : https://commons.wikimedia.org/wiki/File:Canon_Ranch_Railroad_Eclipse_Windmill.jpg
+  license: Public domain

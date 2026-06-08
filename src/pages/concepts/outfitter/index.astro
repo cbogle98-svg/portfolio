@@ -1,0 +1,24 @@
+---
+// Lost Draw Outfitters — CONCEPT home. /concepts/outfitter
+// Mirrors the bosqueworks-demos outfitter home assembly with hardcoded data.
+import lostDraw from '../../../data/lost-draw';
+import OutfitterLayout from '../../../components/outfitter/OutfitterLayout.astro';
+import OutfitterHero from '../../../components/outfitter/OutfitterHero.astro';
+import HuntsList from '../../../components/outfitter/HuntsList.astro';
+import PhotoFeature from '../../../components/outfitter/PhotoFeature.astro';
+import HeritageBlock from '../../../components/outfitter/HeritageBlock.astro';
+import CountryStats from '../../../components/outfitter/CountryStats.astro';
+import BookingForm from '../../../components/outfitter/BookingForm.astro';
+
+const client = lostDraw;
+const slug = 'concepts/outfitter';
+---
+
+<OutfitterLayout client={client} slug={slug}>
+  <OutfitterHero client={client} slug={slug} />
+  <HuntsList client={client} slug={slug} variant="home" />
+  <PhotoFeature client={client} />
+  <HeritageBlock client={client} variant="teaser" />
+  <CountryStats client={client} variant="teaser" />
+  <BookingForm client={client} slug={slug} variant="compact" />
+</OutfitterLayout>

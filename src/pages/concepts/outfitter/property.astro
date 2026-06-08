@@ -1,0 +1,17 @@
+---
+// Lost Draw Outfitters — CONCEPT "The Country" page. /concepts/outfitter/property
+import lostDraw from '../../../data/lost-draw';
+import OutfitterLayout from '../../../components/outfitter/OutfitterLayout.astro';
+import OutfitterPageHero from '../../../components/outfitter/OutfitterPageHero.astro';
+import CountryStats from '../../../components/outfitter/CountryStats.astro';
+import PhotoFeature from '../../../components/outfitter/PhotoFeature.astro';
+
+const client = lostDraw;
+const slug = 'concepts/outfitter';
+---
+
+<OutfitterLayout client={client} slug={slug} title={`The Country — ${client.business.name}`} currentPage="property">
+  <OutfitterPageHero eyebrow={client.business.industry} title="The Country" subtitle="Texas country, worked for generations." />
+  <CountryStats client={client} variant="full" />
+  <PhotoFeature client={client} />
+</OutfitterLayout>

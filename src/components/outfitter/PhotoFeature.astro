@@ -1,0 +1,31 @@
+---
+interface Props {
+  client: any;
+  caption?: string;
+}
+const { client, caption } = Astro.props;
+const photo = client.outfitter?.heroPhoto;
+const cap = caption ?? 'Cross Timbers country at first light.';
+---
+
+{photo && (
+  <section class="relative" style="background:var(--ccv-night)">
+    <div class="relative w-full h-[60vh] md:h-[75vh] overflow-hidden">
+      <img
+        src={photo}
+        alt={cap}
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 pointer-events-none"
+        style="background:linear-gradient(180deg, rgba(31,38,32,0.15) 0%, transparent 40%, rgba(31,38,32,0.6) 100%)">
+      </div>
+      <div class="absolute bottom-8 md:bottom-12 left-0 right-0 text-center px-6">
+        <div class="inline-block px-6 py-3 rounded-sm" style="background:rgba(31,38,32,0.6);backdrop-filter:blur(8px)">
+          <p class="text-base md:text-lg italic" style="color:var(--ccv-cream);font-family:var(--font-heading)">
+            "{cap}"
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
