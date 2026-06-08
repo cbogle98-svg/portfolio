@@ -2,9 +2,11 @@ Lost Draw Outfitters (concept) — photo sources
 Auto-selected from Wikimedia Commons, filtered to Public Domain / CC0.
 
 hero-country.jpg
-  source : https://commons.wikimedia.org/wiki/File:Deer_Park_Prairie.jpg
-  license: CC0
-  author : Brendansoloughlin
+  source : Oklahoma Dept. of Wildlife Conservation — Cross Timbers WMA
+  url    : https://www.wildlifedepartment.com/ (CrossTimbersWMA_KellyAdams)
+  author : Kelly Adams
+  license: NOT public domain — copyrighted; used by Cody Bogle's direction
+           (rights/permission held or risk accepted per BW owner, 2026-06-08)
 
 whitetail.jpg
   source : https://commons.wikimedia.org/wiki/File:White-tailed_Deer_Buck_in_Velvet_(48804848567).jpg
