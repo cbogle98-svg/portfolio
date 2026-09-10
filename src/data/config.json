@@ -146,7 +146,7 @@
     "tiers": [
       {
         "name": "Starter",
-        "price": 800,
+        "price": 200,
         "description": "A clean single-page site that gets your business online fast.",
         "featured": false,
         "features": [
@@ -161,7 +161,7 @@
       },
       {
         "name": "Business",
-        "price": 1800,
+        "price": 500,
         "description": "A full multi-page site with gallery, SEO, and professional presence. The right fit for most local businesses.",
         "featured": true,
         "badge": "Most Popular",
@@ -179,7 +179,7 @@
       },
       {
         "name": "Professional",
-        "price": 3500,
+        "price": 750,
         "description": "Custom design, professional copywriting, and a photo shoot — for businesses ready to own their market.",
         "featured": false,
         "features": [
