@@ -20,7 +20,7 @@ Two taglines, each scoped intentionally.
 
 | Tagline | Where used | Role |
 |---|---|---|
-| "Websites for Local Trades & Service Businesses" | Portfolio site (Hero badge), brochure header, decision sheet | **Primary** — descriptive, SEO-friendly, names the ICP. Use this everywhere unless there's a specific reason to swap. |
+| "Websites for Local Businesses" | Portfolio site (Hero badge), digital card (/card), brochure header, decision sheet | **Primary** — short enough for a card. The hero headline and about copy still name the trades ICP. Use this everywhere unless there's a specific reason to swap. (Shortened 2026-10-25 from "Websites for Local Trades & Service Businesses".) |
 | "Your real business. Built into a real website." | Business card back only | **Punchy variant** — for spaces where the descriptive tagline is too long. Card-back is small format; the punchy line earns the space. |
 
 Don't dual-use them on the same surface. Pick the one that fits the format.
