@@ -10,7 +10,8 @@
     "serviceArea": "Erath County & surrounding areas",
     "email": "cody@bosqueworks.com",
     "website": "bosqueworks.com",
-    "phone": "+12542772131"
+    "phone": "+12568680255",
+    "phoneDisplay": "(256) 868-0255"
   },
   "brand": {
     "navy": "#1C1917",
@@ -362,6 +363,6 @@
     "subjectPrefix": "New portfolio inquiry",
     "turnstileSiteKey": "0x4AAAAAAC2cp_4JPTpQQX9K",
     "successMessage": "Thanks! I'll get back to you within 24 hours.",
-    "errorMessage": "Something went wrong. Please call me at (254) 277-2131 instead."
+    "errorMessage": "Something went wrong. Please call me at (256) 868-0255 instead."
   }
 }
